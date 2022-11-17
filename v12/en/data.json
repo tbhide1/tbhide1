@@ -56,7 +56,7 @@
 					"title": "Creating a data source connection"
 				},
 				{
-					"title": "Configuring the OPC-UA-Input node message flow"
+					"title": "Configuring the OPC-UA-Input node message flow to subscribe to alarms or events"
 				},				
 				{
 					"title": "Deploying the message flows"
@@ -85,8 +85,8 @@
 						"section": "The tutorial will guide you through deploying and starting both flows."
 					},
 					{
-					"section": "The input flow is driven by using the OPC-UA-Input node. The OPC-UA-Input node triggers the flow to run when and alarm or event is triggered. The event data is stored in an output file by using the File Output node."
-					}						
+						"section": "The input flow is driven by using the OPC-UA-Input node. The OPC-UA-Input node triggers the flow to run when the subscribed alarm or event is triggered. Message flow should take different action based on whether it is Alarm or Event type, for e.g. Alarm should be acknowledged by calling some method on OPC Server. There is no need to acknowledge event. Alarms/Events is only applicable for input node, since read/write nodes deal only with values."
+					}								
 				]
 			},			
 			"helpLinks": {
@@ -247,7 +247,7 @@
                     "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
                 "sections":[  					
 {
-						"section": "Configure the Input Message flow ",
+						"section": "Configure the Input Message flow to subscribe to alarms/events",
 						"steps": {
 							"type": "ordered",
 							"details": [{
@@ -347,7 +347,26 @@
 								{
 									"details": "The Alarm / Event data is stored in an output file by using the File Output node."
 								}
-
+							]
+						}
+					},
+					{
+						"section": "Additional Steps for Alarms",
+						"steps": {
+							"type": "ordered",
+							"details": [
+								{
+									"details": "If you have subscribed to Alarms, then you would need to acknowledge the alarm."
+								},
+								{
+									"details": "This can be done by adding an OPC-UA-Method-Call node in the above flow and invoking the method to acknowledge the alarm. "
+								},
+								{
+									"details": "For example, in case you are using the Prosys Simulator Server, you can subscribe to the MyLevelAlarms which is of type ExclusiveLevelAlarmType . "
+								},
+								{
+									"details": "You can acknowledge the alarm by . "
+								}
 							]
 						}
 					}

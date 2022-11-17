@@ -33,14 +33,14 @@
 		"_common": 
 		{
 			"name": "App Connect for Manufacturing - Using the OPC-UA-Input nodes to subscribe to alarms and events from an OPC Server",
-			"shortDescription": "Learn again how to create a simple message flow by using the OPC-UA-Input node to read subscribed data from an OPC server. This tutorial requires an installation of App Connect for Manufacturing.",
+			"shortDescription": "Learn how to create a simple message flow by using the OPC-UA-Input node to subscribe to alarms and events from an OPC server. This tutorial requires an installation of App Connect for Manufacturing.",
 			"durationText": "This tutorial takes approximately",
 			"durationTime": "10 minutes",
 			"_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json.",
 			"resourceToOpen": "MainFlow",
 			"helpLink": {
 				"text": "IBM Documentation",
-				"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=manufacturing-developing-message-flow-applications"
+				"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=overview-supported-opc-ua-features#mfp_opc_intro__subornot"
 			}		
 		
 		
@@ -63,13 +63,13 @@
 				}
 			],
 			"outcomesName": "Learning outcomes",
-			"_outcomesComment": "Learn how to create a message flow to read changed values of the subscribed data from an OPC server using the OPC-UA-Input node.",			
+			"_outcomesComment": "Learn how to create a message flow to subscribe to Alarms and Events from an OPC server using the OPC-UA-Input node.",			
 			"outcomeList": [{
-				"title": "Learn how to create a message flow to read changed values of the subscribed data from an OPC server using the OPC-UA-Input node."
+				"title": "Learn how to create a message flow to subscribe to Alarms and Events from an OPC server using the OPC-UA-Input node."
 			}],
             "summary": {
 				"overviewName": "OVERVIEW",
-				"_overviewComment": "This tutorial demonstrates how to create a simple message flow using the OPC-UA-Input node to read subscribed data from an OPC Server, when the data value changes.",
+				"_overviewComment": "This tutorial demonstrates how to create a simple message flow using the OPC-UA-Input node to subscribe to Alarms and Events from an OPC server using the OPC-UA-Input node. ",
 				"sections": [
 				
 					{
@@ -85,7 +85,7 @@
 						"section": "The tutorial will guide you through deploying and starting both flows."
 					},
 					{
-					"section": "The input flow is driven by using the OPC-UA-Input node. The OPC-UA-Input node triggers the flow to run when the value of the specified client item changes. The updated client item value is stored in an output file by using the File Output node."
+					"section": "The input flow is driven by using the OPC-UA-Input node. The OPC-UA-Input node triggers the flow to run when and alarm or event is triggered. The event data is stored in an output file by using the File Output node."
 					}						
 				]
 			},			
@@ -263,7 +263,7 @@
 										"details": "Select the appropriate 'Data source' that was created earlier in the Prepare section."
 									},
 									{
-										"details": "Click on 'Refresh Source Item Tree' to load the Source Items. Select the node from the source tree for which you want to read data "
+										"details": "Click on 'Refresh Source Item Tree' to load the Source Items. In Source Items, the red flash means that the object emits events. This can be used to have a trigger item triggered by an event of that object."
 									},
 									{
 										"details": "From the 'Client Items' tree, right-click on the 'Item' node and select 'Add Mapping Node'"
@@ -274,18 +274,45 @@
 									{
 										"details": "Click 'Create Client Item' from the 'Client Item Properties' tab"
 									},
-								{
-									"details": "Click 'Add Trigger Item' and the Add Trigger Item wizard window loads. Select the default values and click OK."
-								},
-								{
-									"details": "Navigate back to the Flow Exerciser and double-click the File Output node. The File Output node properties window loads."
-								},
-								{
-									"details": "Click the Basic tab. Specify the directory, file name of the output file where the subscribed data values should be stored and set the 'Select the mode for writing to file' as 'Write directly to the output file (append if file exists)'."
-								},
-								{
-									"details": "Save the flow"
-								}
+									{
+										"details": "Once a client item is created using a source object that trigger events, even the client item will have red flash."
+									},
+									{
+										"details": "Click 'Add Trigger Item' and the Add Trigger Item wizard window loads. "
+									},
+									{
+										"details": "Triggered By - If the source item has value as well as event, then the Triggered By drop down has 2 values – Event and Value. User must select the option that he wants the trigger item to be triggered by. "
+									},
+									{
+										"details": "Event Data – All the data items that can be delivered with an Event. All the children (properties and variables) of the event type object in OPC Server are listed in the Event Data list."
+									},
+									{
+										"details": "At least one checkbox from Event Data must be selected for OPCUA. The event that comes in will have the values attached to it for the selected options. Example event data can be EventId, EventType, Message etc."
+									},
+									{
+										"details": "If we click OK button then the item will be added in trigger item list."
+									},
+									{
+										"details": "When we try to edit the Trigger Item – it won’t allow to change the Triggered By value (it is disabled). But it will allow to click on 'Add button' to add more items."
+									},
+									{
+										"details": "After clicking the Add button, the Manufacturing perspective opens again, and the button label changes to Add Item to Trigger. This way additional values can be added to the same trigger item. These values will come along with the trigger (Event)."
+									},
+									{
+										"details": "Please note that the above items added are the additional items. The input node will be triggered by Event (and not by changes in the client items in the Additional Items List). The data received will have the value for the main event as well as for the additional items."
+									},
+									{
+										"details": "If we select a source item that does not emit event, then the Triggered By value is shown as Value Change. If the source item has both Value and Event, then both will be seen in the drop down."
+									},
+									{
+										"details": "Navigate back to the Flow Exerciser and double-click the File Output node. The File Output node properties window loads."
+									},
+									{
+										"details": "Click the Basic tab. Specify the directory, file name of the output file where the subscribed data values should be stored and set the 'Select the mode for writing to file' as 'Write directly to the output file (append if file exists)'."
+									},
+									{
+										"details": "Save the flow"
+									}
 							]
 						}
 					},
@@ -315,10 +342,10 @@
 							"type": "ordered",
 							"details": [
 								{
-									"details": "The OPC-UA-Input node automatically triggers the flow to run when the value of the specified client item changes on the OPC Server."
+									"details": "The OPC-UA-Input node automatically triggers the flow to run when the specified alarm or event is triggered by the OPC Server."
 								},
 								{
-									"details": "The updated client item value is stored in an output file by using the File Output node."
+									"details": "The Alarm / Event data is stored in an output file by using the File Output node."
 								}
 
 							]

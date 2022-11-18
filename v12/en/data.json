@@ -85,7 +85,7 @@
 						"section": "The tutorial will guide you through deploying and starting both flows."
 					},
 					{
-						"section": "The input flow is driven by using the OPC-UA-Input node. The OPC-UA-Input node triggers the flow to run when the subscribed alarm or event is triggered. Message flow should take different action based on whether it is Alarm or Event type. For e.g., alarm should be acknowledged by calling some method on OPC Server. There is no need to acknowledge event."
+						"section": "The input flow is driven by using the OPC-UA-Input node. The OPC-UA-Input node triggers the flow to run when the subscribed alarm or event is triggered. User could take different action in the message flow based on whether it is an Alarm or Event and the data recieved. For example, alarm may need to be acknowledged by calling some method on OPC Server. There is no need to acknowledge event."
 					}								
 				]
 			},			
@@ -115,10 +115,10 @@
 					"_createComment": "A description of what will happen when the user clicks Import.",
 					"sections": [						
 						{
-							"section": "Click <span class='uicontrol'>Import</span> and the <span class='uicontrol'>App_OPCUA_Input</span> and <span class='uicontrol'>App_OPCUA_Control</span> applications will be imported into your workspace."
+							"section": "Click <span class='uicontrol'>Import</span> and the <span class='uicontrol'>App_OPCUA_Input_AlarmEvent</span> and <span class='uicontrol'>App_OPCUA_Control</span> applications will be imported into your workspace."
 						},						
 						{
-							"section": "The <span class='uicontrol'>App_OPCUA_Input</span> application contains <span class='uicontrol'>Flow_OPCUA_Input.msgflow</span> while <span class='uicontrol'>App_OPCUA_Control</span> contains <span class='uicontrol'>Flow_OPCUA_Control.msgflow</span>."
+							"section": "The <span class='uicontrol'>App_OPCUA_Input</span> application contains <span class='uicontrol'>Flow_OPCUA_InputAE.msgflow</span> while <span class='uicontrol'>App_OPCUA_Control</span> contains <span class='uicontrol'>Flow_OPCUA_Control.msgflow</span>."
 						}
 					]
 				},
@@ -126,10 +126,18 @@
 					"title": "Find out more",
 					"details": [{
 						"title": "IBM Documentation link to ",
+						"description": "Installing and uninstalling IBM AppConnect for Manufacturing",
+						"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=manufacturing-installing-uninstalling",
+						"type": "web"
+					}
+					{
+						"title": "IBM Documentation link to ",
 						"description": "Developing Message Flow applications",
 						"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=manufacturing-developing-message-flow-applications",
 						"type": "web"
-					}]
+					}
+					
+					]
 				},
                 "actions": 
 				{
@@ -251,7 +259,7 @@
 						"steps": {
 							"type": "ordered",
 							"details": [{
-										"details": "From the Application Development view, under the App_OPCUA_Input application, double-click Flow_OPCUA_Input.msgflow to open in the Flow Exerciser. The flow consists of 'OPC-UA-Input', and 'File Output' nodes. "
+										"details": "From the Application Development view, under the App_OPCUA_Input_AlarmEvent application, double-click Flow_OPCUA_InputAE.msgflow to open in the Flow Exerciser. The flow consists of 'OPC-UA-Input', and 'File Output' nodes. "
 									},
 									{
 										"details": "Navigate to the Flow Exerciser and double-click the OPC-UA-Input node to open the OPC-UA-Input Node properties. "
@@ -284,13 +292,13 @@
 										"details": "Here you can select or add values for <b> Triggered By </b> , <b> Processing Parameter </b> , <b> Event Data </b> and <b> Additional Items </b> "
 									},
 									{
-										"details": "<b> Triggered By:</b> User must select the Event/Value Change that would trigger Input Node. This could be different event / alarm types or by Value.For example, in case of UACPP Simulation server, if you select  /Objects/Server/3:AreaAirConditioner/3:AirConditioner_1 , then the Triggered By list shows 3:ControllerEventType / BaseEventType / OffNormalAlarmType . You need to select one of these event types. The Event Data that will be sent along with the event, will vary based on the event type that you select."
+										"details": "<b> Triggered By:</b> User must select one of the Events or Value Change options from the drop down list, that would trigger Input Node. This could be different event / alarm types or by Value change.For example, in case of UACPP Simulation server, if you select  /Objects/Server/3:AreaAirConditioner/3:AirConditioner_1 , then the Triggered By list shows 3:ControllerEventType / BaseEventType / OffNormalAlarmType . You need to select one of these event types. The Event Data that will be sent along with the event, will vary based on the event type that you select."
 									},
 																		{
 										"details": "<b> Processing Parameter:</b> Optional parameter can be specified that can be accessed in the message flow and can be used to distinguish between the trigger items."
 									},
 									{
-										"details": "<b> Event Data: </b> All the data items that can be delivered with an Event. All the children (properties and variables) of the event type object in OPC Server are listed in the Event Data list."
+										"details": "<b> Event Data: </b> All the data items that can be delivered with an Event. Properties and variables of the event type object in OPC Server are listed in the Event Data list."
 									},
 									{
 										"details": "At least one checkbox from Event Data must be selected. The event that comes in will have the values attached to it for the selected options. For example, event data can be EventId, EventType, Message etc."
@@ -315,7 +323,7 @@
 										"details": "Navigate back to the Flow Exerciser and double-click the File Output node. The File Output node properties window loads."
 									},
 									{
-										"details": "Click the Basic tab. Specify the directory, file name of the output file where the subscribed data values should be stored and set the 'Select the mode for writing to file' as 'Write directly to the output file (append if file exists)'."
+										"details": "Click the Basic tab. Specify the directory, file name of the output file where the subscribed event data values should be stored and set the 'Select the mode for writing to file' as 'Write directly to the output file (append if file exists)'."
 									},
 									{
 										"details": "Save the flow"
@@ -331,13 +339,13 @@
 										"details": "Ensure that you are connected to an Integration Server."
 									},
 									{
-										"details": "From the Application Development view , right-click the Flow_OPCUA_Input.msgflow and select 'Deploy'."
+										"details": "From the Application Development view , right-click the Flow_OPCUA_InputAE.msgflow and select 'Deploy'."
 									}, 
 									{
 										"details": "In the Deploy window, select the integration server that you have started, and click Finish."
 									}, 
 									{
-										"details": "Click 'Ok' to confirm the deployment.The App_OPCUA_Input application name is displayed under the selected integration server from Integration Nodes view." 
+										"details": "Click 'Ok' to confirm the deployment.The App_OPCUA_Input_AlarmEvent application name is displayed under the selected integration server from Integration Nodes view." 
 									}
 								]
 							}
@@ -363,16 +371,10 @@
 							"type": "ordered",
 							"details": [
 								{
-									"details": "If you have subscribed to Alarms, then you would need to acknowledge the alarm."
+									"details": "If you have subscribed to Alarms, then you may need to acknowledge the alarm or invoke some methods on the OPCServer as per configuration on the OPCServer."
 								},
 								{
-									"details": "This can be done by adding an OPC-UA-Method-Call node in the above flow and invoking the method to acknowledge the alarm. "
-								},
-								{
-									"details": "For example, in case you are using the Prosys Simulator Server, you can subscribe to the MyLevelAlarms which is of type ExclusiveLevelAlarmType . "
-								},
-								{
-									"details": "You can acknowledge the alarm by . "
+									"details": "This can be done by adding an OPC-UA-Method-Call node in the above flow and invoking the method to acknowledge the alarm or calling any other required method. "
 								}
 							]
 						}

@@ -279,8 +279,7 @@
 									},
 									{
 										"details": "Click 'Add Trigger Item' and the Add Trigger Item wizard window loads. "
-									},
-								    									},
+									},						
 									{
 										"details": "Here you can select or add values for <b> Triggered By </b> , <b> Processing Parameter </b> , <b> Event Data </b> and <b> Additional Items </b>"
 									},

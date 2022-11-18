@@ -85,7 +85,7 @@
 						"section": "The tutorial will guide you through deploying and starting both flows."
 					},
 					{
-						"section": "The input flow is driven by using the OPC-UA-Input node. The OPC-UA-Input node triggers the flow to run when the subscribed alarm or event is triggered. User could take different action in the message flow based on whether it is an Alarm or Event and the data recieved. For example, alarm may need to be acknowledged by calling some method on OPC Server. There is no need to acknowledge event."
+						"section": "The input flow is driven by using the OPC-UA-Input node. The OPC-UA-Input node triggers the flow to run when the subscribed alarm or event is triggered. User could take different action in the message flow based on whether it is an Alarm or Event and the data recieved. For example, alarm may need to be acknowledged by calling some method on OPC Server."
 					}								
 				]
 			},			
@@ -118,7 +118,7 @@
 							"section": "Click <span class='uicontrol'>Import</span> and the <span class='uicontrol'>App_OPCUA_Input_AlarmEvent</span> and <span class='uicontrol'>App_OPCUA_Control</span> applications will be imported into your workspace."
 						},						
 						{
-							"section": "The <span class='uicontrol'>App_OPCUA_Input</span> application contains <span class='uicontrol'>Flow_OPCUA_InputAE.msgflow</span> while <span class='uicontrol'>App_OPCUA_Control</span> contains <span class='uicontrol'>Flow_OPCUA_Control.msgflow</span>."
+							"section": "The <span class='uicontrol'>App_OPCUA_Input_AlarmEvent</span> application contains <span class='uicontrol'>Flow_OPCUA_InputAE.msgflow</span> while <span class='uicontrol'>App_OPCUA_Control</span> contains <span class='uicontrol'>Flow_OPCUA_Control.msgflow</span>."
 						}
 					]
 				},
@@ -271,7 +271,7 @@
 										"details": "Select the appropriate 'Data source' that was created earlier in the Prepare section."
 									},
 									{
-										"details": "Click on 'Refresh Source Item Tree' to load the Source Items. In Source Items, the <b> red flash </b> means that the object emits events. This can be used to have a trigger item triggered by an event of that object."
+										"details": "Click on 'Refresh Source Item Tree' to load the Source Items. In Source Items, the <b> red flash </b> means that the object emits events or alarms. This can be used to have a trigger item triggered by an event of that object."
 									},
 									{
 										"details": "From the 'Client Items' tree, right-click on the 'Item' node and select 'Add Mapping Node'"

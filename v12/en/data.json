@@ -247,7 +247,7 @@
                     "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
                 "sections":[  					
 {
-						"section": "Configure the Input Message flow to subscribe to alarms/events",
+						"section": "<b> Configure the Input Message flow to subscribe to alarms/events </b>",
 						"steps": {
 							"type": "ordered",
 							"details": [{

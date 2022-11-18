@@ -317,7 +317,7 @@
 						}
 					},
 					{
-							"section": "Deploying the OPC-UA-Input node message flow",
+							"section": "<b>Deploying the OPC-UA-Input node message flow</b>",
 							"steps": {
 								"type": "ordered",
 								"details": [{
@@ -337,7 +337,7 @@
 						},
 
 					{
-						"section": "Test the Input Flow ",
+						"section": "<b>Test the Input Flow</b> ",
 						"steps": {
 							"type": "ordered",
 							"details": [
@@ -351,7 +351,7 @@
 						}
 					},
 					{
-						"section": "Additional Steps for Alarms",
+						"section": "<b>Additional Steps for Alarms</b>",
 						"steps": {
 							"type": "ordered",
 							"details": [

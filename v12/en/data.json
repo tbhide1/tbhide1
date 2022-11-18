@@ -129,7 +129,7 @@
 						"description": "Installing and uninstalling IBM AppConnect for Manufacturing",
 						"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=manufacturing-installing-uninstalling",
 						"type": "web"
-					}
+					},
 					{
 						"title": "IBM Documentation link to ",
 						"description": "Developing Message Flow applications",

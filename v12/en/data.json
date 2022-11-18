@@ -275,7 +275,7 @@
 										"details": "Click 'Create Client Item' from the 'Client Item Properties' tab"
 									},
 									{
-										"details": "Once a client item is created using a source object that trigger events, even the client item will have red flash."
+										"details": "Once a client item is created using a source object that trigger events, even the client item will have <b> red flash </b>."
 									},
 									{
 										"details": "Click 'Add Trigger Item' and the Add Trigger Item wizard window loads. "

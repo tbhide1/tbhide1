@@ -280,6 +280,10 @@
 									{
 										"details": "Click 'Add Trigger Item' and the Add Trigger Item wizard window loads. "
 									},
+								    									},
+									{
+										"details": "Here you can select or add values for <b> Triggered By </b> , <b> Processing Parameter </b> , <b> Event Data </b> and <b> Additional Items </b>"
+									},
 									{
 										"details": "Triggered By - If the source item has value as well as event, then the Triggered By drop down has 2 values – Event and Value. User must select the option that he wants the trigger item to be triggered by. "
 									},

@@ -284,26 +284,26 @@
 										"details": "Here you can select or add values for <b> Triggered By </b> , <b> Processing Parameter </b> , <b> Event Data </b> and <b> Additional Items </b> "
 									},
 									{
-										"details": "<b> Triggered By:</b> User must select the option that he wants the trigger item to be triggered by. "
+										"details": "<b> Triggered By:</b> User must select the Event/Value Change that would trigger Input Node. This could be different event / alarm types or by Value.For example, in case of UACPP Simulation server, if you select  /Objects/Server/3:AreaAirConditioner/3:AirConditioner_1 , then the Triggered By list shows 3:ControllerEventType / BaseEventType / OffNormalAlarmType . You need to select one of these event types. The Event Data that will be sent along with the event, will vary based on the event type that you select."
 									},
 																		{
-										"details": "<b> Processing Parameter:</b> Additional optional parameter can be specified that can be accessed in the message flow and can be used to distinguish between the trigger items."
+										"details": "<b> Processing Parameter:</b> Optional parameter can be specified that can be accessed in the message flow and can be used to distinguish between the trigger items."
 									},
 									{
 										"details": "<b> Event Data: </b> All the data items that can be delivered with an Event. All the children (properties and variables) of the event type object in OPC Server are listed in the Event Data list."
 									},
 									{
-										"details": "At least one checkbox from Event Data must be selected for OPCUA. The event that comes in will have the values attached to it for the selected options. For example, event data can be EventId, EventType, Message etc."
+										"details": "At least one checkbox from Event Data must be selected. The event that comes in will have the values attached to it for the selected options. For example, event data can be EventId, EventType, Message etc."
 									},
 									{
-										"details": "<b> Additional Items: </b> After clicking the Add button, the Manufacturing perspective opens again.The button label changes to Add Item to Trigger. This way additional values can be added to the same trigger item. These values will come along with the trigger (Event)."
+										"details": "<b> Additional Items: </b> After clicking the Add button, the Manufacturing perspective opens again.The button label changes to Add Item to Trigger . This way additional values can be added to the same trigger item. These values will come along with the trigger (Event)."
 									},
 									{
 										"details": "If we click OK button then the item will be added in trigger item list."
 									},
 									
 									{
-										"details": "Please note that the above items added are the additional items. The input node will be triggered by Event (and not by changes in the client items in the Additional Items List). The data received will have the value for the main event as well as for the additional items."
+										"details": "Note that the above items added are the additional items. The input node will be triggered by selected Event object in the <b> Triggered By </b> (and not by changes in the client items in the Additional Items List). The data received will have the value for the main event as well as for the additional items."
 									},
 									{
 										"details": "When we try to edit the Trigger Item, it won’t allow to change the Triggered By value (it is disabled). But it will allow to click on 'Add button' to add more items."

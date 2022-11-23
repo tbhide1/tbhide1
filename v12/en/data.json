@@ -298,7 +298,7 @@
 										"details": "<b> Triggered By:</b> User must select one of the Events or Value Change options from the drop down list, that would trigger Input Node. This could be different event / alarm types or by Value change.For example, in case of UACPP Simulation server, if you select  /Objects/Server/3:AreaAirConditioner/3:AirConditioner_1 , then the Triggered By list shows 3:ControllerEventType / BaseEventType / OffNormalAlarmType . You need to select one of these event types. The Event Data that will be sent along with the event, will vary based on the event type that you select."
 									},
 																		{
-										"details": "<b> Processing Parameter:</b> Optional parameter can be specified that can be accessed in the message flow and can be used to distinguish between the trigger items."
+										"details": "<b> Processing Parameter:</b> [Optional] Users have an option to specify value for this parameter.The specified value is passed as is to the output of the InputNode during the messageflow execution. The value of the parameter is available in the messageflow for later use, as per the Use Case."
 									},
 									{
 										"details": "<b> Event Data: </b> All the data items that can be delivered with an Event. Properties and variables of the event type object in OPC Server are listed in the Event Data list."

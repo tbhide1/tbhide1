@@ -40,7 +40,7 @@
 			"resourceToOpen": "MainFlow",
 			"helpLink": {
 				"text": "IBM Documentation",
-				"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=overview-supported-opc-ua-features#mfp_opc_intro__subornot"
+				"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=overview-supported-opc-ua-features"
 			}		
 		
 		
@@ -274,6 +274,9 @@
 										"details": "Click on 'Refresh Source Item Tree' to load the Source Items. In Source Items, the <b> red flash </b> means that the object emits events or alarms. This can be used to have a trigger item triggered by an event of that object."
 									},
 									{
+										"details": "From the 'Source Item Tree', select the required node that triggers events / alarms as described above."
+									},
+									{
 										"details": "From the 'Client Items' tree, right-click on the 'Item' node and select 'Add Mapping Node'"
 									},
 									{
@@ -298,7 +301,7 @@
 										"details": "<b> Triggered By:</b> User must select one of the Events or Value Change options from the drop down list, that would trigger Input Node. This could be different event / alarm types or by Value change.For example, in case of UACPP Simulation server, if you select  /Objects/Server/3:AreaAirConditioner/3:AirConditioner_1 , then the Triggered By list shows 3:ControllerEventType / BaseEventType / OffNormalAlarmType . You need to select one of these event types. The Event Data that will be sent along with the event, will vary based on the event type that you select."
 									},
 																		{
-										"details": "<b> Processing Parameter:</b> [Optional] Users have an option to specify value for this parameter.The specified value is passed as is to the output of the InputNode during the messageflow execution. The value of the parameter is available in the messageflow for later use, as per the Use Case."
+										"details": "<b> Processing Parameter:</b> [Optional] Users have an option to specify value for this property. The specified value is passed as is to the output of the InputNode in the message flow. This value of the ProcessingParameter can then be accessed and used as per the Use Case in the messageflow."
 									},
 									{
 										"details": "<b> Event Data: </b> All the data items that can be delivered with an Event. Properties and variables of the event type object in OPC Server are listed in the Event Data list."
@@ -307,12 +310,11 @@
 										"details": "At least one checkbox from Event Data must be selected. The event that comes in will have the values attached to it for the selected options. For example, event data can be EventId, EventType, Message etc."
 									},
 									{
-										"details": "<b> Additional Items: </b> After clicking the Add button, the Manufacturing perspective opens again.The button label changes to Add Item to Trigger . This way additional values can be added to the same trigger item. These values will come along with the trigger (Event)."
+										"details": "<b> Additional Items: </b> After clicking the Add button, the Manufacturing perspective opens again. You can add the additional items by clicking on the 'Add Item to Trigger'. This way additional values can be added to the same trigger item and are listed under the 'Additional Items' list. These values will come along with the trigger (Event)."
 									},
 									{
-										"details": "If we click OK button then the item will be added in trigger item list."
-									},
-									
+										"details": "If we click OK button then the item will be added in Trigger Item List."
+									},									
 									{
 										"details": "Note that the above items added are the additional items. The input node will be triggered by selected Event object in the <b> Triggered By </b> (and not by changes in the client items in the Additional Items List). The data received will have the value for the main event as well as for the additional items."
 									},

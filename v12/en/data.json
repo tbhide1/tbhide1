@@ -32,15 +32,15 @@
 	{
 		"_common": 
 		{
-			"name": "App Connect for Manufacturing - Using the OPC-UA-Input node to subscribe to alarms and events from an OPC Server",
-			"shortDescription": "Create one simple message flow by using the OPC-UA-Input node to subscribe to alarms and events from an OPC server. This tutorial requires an installation of App Connect for Manufacturing. If you are familiar with the development of flows using the Manufacturing nodes, you can directly refer to the Run section to learn how to subscribe to alarms or events.",
+			"name": "App Connect for Manufacturing - Integration with the IBM Operational Decision Manager (ODM) using the ODMRules Node",
+			"shortDescription": "Create one simple message flow by using the OPC-UA-Read node and ODMRules node to connect to an ODM Server. This tutorial requires an installation of App Connect for Manufacturing and set up of the Operational Decision Manager. This tutorial assumes you are familiar with the creation of Rules in the Rules Designer and deploying the rules on the Rules Execution Server.",
 			"durationText": "This tutorial takes approximately",
-			"durationTime": "10 minutes",
+			"durationTime": "20 minutes",
 			"_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json.",
 			"resourceToOpen": "MainFlow",
 			"helpLink": {
 				"text": "IBM Documentation",
-				"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=overview-supported-opc-ua-features"
+				"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=manufacturing-app-connect-overview"
 			}		
 		
 		
@@ -50,42 +50,54 @@
 			"_topicListComment": "A short list of product concepts or tasks demonstrated by this tutorial",
 			"topicList": [
 				{
+					"title": "Creating and deploying rules on ODM Rules Server"
+				},
+				{
 					"title": "Creating and starting an Integration Server"
+				},
+				{
+					"title": "Creating secure vault to store ODM credentials"
 				},
 				{
 					"title": "Creating a data source connection"
 				},
 				{
-					"title": "Configuring the OPC-UA-Input node message flow to subscribe to alarms or events"
+					"title": "Creating a policy project"
+				},
+				{
+					"title": "Configuring the OPC-UA-Read node message flow and integrate with the ODM Rules node."
 				},				
 				{
 					"title": "Deploying the message flows"
 				}
 			],
 			"outcomesName": "Learning outcomes",
-			"_outcomesComment": "Learn how to create a message flow to subscribe to Alarms and Events from an OPC server using the OPC-UA-Input node.",			
+			"_outcomesComment": "Learn how to create one simple message flow by using the OPC-UA-Read node and ODMRules node to connect to an ODM Server.",			
 			"outcomeList": [{
-				"title": "Learn how to create a message flow to subscribe to Alarms and Events from an OPC server using the OPC-UA-Input node."
+				"title": "Learn how to create one simple message flow by using the OPC-UA-Read node and ODMRules node to connect to an ODM Server."
 			}],
             "summary": {
 				"overviewName": "OVERVIEW",
-				"_overviewComment": "This tutorial demonstrates how to create a simple message flow using the OPC-UA-Input node to subscribe to Alarms and Events from an OPC server using the OPC-UA-Input node. ",
+				"_overviewComment": "This tutorial demonstrates how to create one simple message flow by using the OPC-UA-Read node and ODMRules node to connect to an ODM Server. ",
 				"sections": [
+					{
+						"section": "This tutorial assumes you have installed and configured IBM Operational Decision Manager(ODM) and that you are familiar with Rules development and deployment on the Rules Server. For more information, see Installing IBM ODM in the help links provided below."
+					},
 				
 					{
 						"section": "This tutorial assumes you have installed and configured App Connect for Manufacturing. For more information, see Installing IBM App Connect for Manufacturing in the help links provided below."
 					},
-										{
+					{
 						"section": "You must create an integration server before you can deploy integration solutions and related resources. You will also need to connect your Toolkit to an OPC server."
 					},
 					{
-						"section": "You can try out this message flow by simply importing the two provided projects. One application project contains a control flow and another application project contains an input flow."
+						"section": "You can try out this message flow by simply importing the two provided projects. One application project contains a control flow and another application project contains a read flow."
 					},
 					{
 						"section": "The tutorial will guide you through deploying and starting both flows."
 					},
 					{
-						"section": "The input flow is driven by using the OPC-UA-Input node. The OPC-UA-Input node triggers the flow to run when the subscribed alarm or event is triggered. User could take different action in the message flow based on whether it is an Alarm or Event and the data recieved. For example, alarm may need to be acknowledged by calling some method on OPC Server."
+						"section": "The read flow is driven using its HTTP Input node, which triggers the flow to run. The OPC-UA-Read node then reads data from the connected OPC server. The response from the message flow is then returned to the HTTP client by the HTTP Reply node."
 					}								
 				]
 			},			
@@ -100,8 +112,8 @@
 						},
 						{
 							"title": "Knowledge Center link to ",
-							"description": "Installing and uninstalling IBM App Connect for Manufacturing",
-							"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=manufacturing-installing-uninstalling",
+							"description": "Installing and uninstalling IBM Operational Decision Manager",
+							"link": "https://www.ibm.com/docs/en/odm/8.11.0",
 							"type": "web"
 						}											
 						]
@@ -115,10 +127,10 @@
 					"_createComment": "A description of what will happen when the user clicks Import.",
 					"sections": [						
 						{
-							"section": "Click <span class='uicontrol'>Import</span> and the <span class='uicontrol'>App_OPCUA_Input_AlarmEvent</span> and <span class='uicontrol'>App_OPCUA_Control</span> applications will be imported into your workspace."
+							"section": "Click <span class='uicontrol'>Import</span> and the <span class='uicontrol'>App_OPCUA_ODMRules</span> and <span class='uicontrol'>App_OPCUA_Control</span> applications will be imported into your workspace."
 						},						
 						{
-							"section": "The <span class='uicontrol'>App_OPCUA_Input_AlarmEvent</span> application contains <span class='uicontrol'>Flow_OPCUA_InputAE.msgflow</span> while <span class='uicontrol'>App_OPCUA_Control</span> contains <span class='uicontrol'>Flow_OPCUA_Control.msgflow</span>."
+							"section": "The <span class='uicontrol'>App_OPCUA_ODMRules</span> application contains <span class='uicontrol'>Flow_OPCUA_ODM.msgflow</span> while <span class='uicontrol'>App_OPCUA_Control</span> contains <span class='uicontrol'>Flow_OPCUA_Control.msgflow</span>."
 						}
 					]
 				},
@@ -155,8 +167,8 @@
 			{
 				"overview": {
 				"name": "Prepare",
-				"heading": "Prepare for Input Flow",
-				"_prepareComment": "Prepare for Input Flow",
+				"heading": "Prepare for Read Flow using ODMRules node",
+				"_prepareComment": "Prepare for Read Flow using ODMRules node",
 				"sections": [{
 							"section": "Creating a Data Source connection to an OPC Server",
 							"steps": {
@@ -195,7 +207,7 @@
 						}
 					},		
 					{
-						"section": "Creating and starting an Integration Server:",
+						"section": "Creating and starting an Integration Server",
 						"steps": {
 							"type": "ordered",
 							"details": [
@@ -207,8 +219,7 @@
 									},
 									{
 										"details": "For example : Modify C:\\TESTSERVER\\server.conf.yaml in windows and /opt/TESTSERVER/server.conf.yaml in linux/unix to add the following lines under 'ConnectorProviders' to add App Connect for Manufacturing connector provider properties.:"
-									},
-									
+									},									
 									{
 										"details": "For Windows: <br><code>&nbsp;&nbsp;ACMfg:<br>&nbsp;&nbsp;&nbsp;&nbsp;connectorClassName: 'com.ibm.industrypack.industryclient.connector.ICConnectorFactory'<br>&nbsp;&nbsp;&nbsp;&nbsp;jarsURL: 'C:\\Program Files\\IBM\\ACMfg\\3.0.1.0\\runtime\\amd64_nt_4'<br>&nbsp;&nbsp;&nbsp;&nbsp;property1: 'trustCertificate=true'<br>&nbsp;&nbsp;&nbsp;&nbsp;property2: 'allowEndpointMismatch=true;discardData=false'</code>"
 									},
@@ -225,7 +236,54 @@
 										"details": "In the App Connect Enterprise Toolkit Integration Explorer view, right click the folder <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/ace/IntegrationServers.png' alt='' /> and select the menu item  <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/ace/ConnectToAnIntegrationServer.png' alt='' />. In the connection details panel, specify the <b>Host name</b> to be <b>localhost</b>, the <b>Port</b> to be <b>7600</b> and click Finish. This will connect your Toolkit and display the integration server that you started in the last step <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/ace/TESTSERVER.png' alt='' />"
 									}							]
 						}
+					},
+					{
+						"section": "Creating secure vault using mqsicredentials for the Integration Server",
+						"steps": {
+							"type": "ordered",
+							"details": [
+									{
+										"details": "For the integration server created in the above section, we need to create a secure vault and add the credentials of the ODM Rules Server.For example, in the below command secure vault with vault key testODMVault1 is created. Credential Type is odm.Specify any credential-name and appropriate username and password to connect to the ODM Rules Server."
+									},
+									{
+										"details": "mqsicredentials --work-dir C:\\TESTSERVER --vault-key testODMVault1 --create --credential-type odm --credential-name odmCred --username user --password pass"
+									},
+									{
+										"details": "Restart the Integration server by specifying the vault-key created above. "
+									},
+									{
+										"details": "Assuming you are using a Windows platform, open an App Connect Enterprise Command Console and start an integration server using the following command:<br><code>IntegrationServer --work-dir C:\\TESTSERVER --name TESTSERVER --admin-rest-api 7600 --http-port-number 7800 --console-log</code>  --vault-key odmCred<br>where <b>C:\\TESTSERVER</b> is a folder on your file system that the server will use for its working directory."
+									}
+							]
+						}
+					},
+					{
+						"section": "Creating a policy project",
+						"steps": {
+							"type": "ordered",
+							"details": [
+									{
+										"details": "You will need to create a Policy Project with a Policy of type ODM Server and Template as ODM Server. Sample Policy project is provided with the tutorial and will be imported along with the other applications. "
+									},
+									{
+										"details": "Please provide the required parameters for the Policy project as described in https://www.ibm.com/docs/en/app-connect/11.0.0?topic=properties-odm-server-policy-odmserver"
+									},
+									{
+										"details": "<b>Rule Execution Server URL</b> specifies the URL of the Rules Execution Server. For example,http://localhost:9080/res/ "
+									},
+									{
+										"details": "<b>ODM Jars URL</b> specifies the file location of the IBM ODM Execution Server Client Jar files to be used by the policy. For example: C:\\IBM\\ODM\\executionserver\\lib. You will need to copy these jars from the ODM Execution server to the machine that is running the Integration Server."
+									},
+									{
+										"details": "<b>secureIdentity </b> specifies the secure identity containing the credentials to be used for accessing the Rule Execution Server. For example, you need to specify the credential name created in the above step: odmCred  "
+									},
+									{
+										"details": "Rest of the properties can be selected as default."
+									}									
+							]
+						}
 					}
+
              ]
                 },
                 "helpLinks": 
@@ -234,16 +292,11 @@
 			"details": [
 					{
 						"title": "IBM Documentation link to ",
-						"description": "Using the Manufacturing Perspective",
-						"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=manufacturing-app-connect-overview",
+						"description": "ODM Server Policy",
+						"link": "https://www.ibm.com/docs/en/app-connect/11.0.0?topic=properties-odm-server-policy-odmserver",
 						"type": "web"
-					},
-					{
-						"title": "IBM Documentation link to Troubleshooting ",
-						"description": "Troubleshooting and Logging",
-						"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=manufacturing-troubleshooting-support",
-						"type": "web"					
-					}				]
+					}
+					]
                 }
             },
             "run": 
@@ -251,18 +304,18 @@
                 "overview": 
 				{
                     "name": "Run",
-                    "heading": "Configure, Deploy and Test the Input Flow",
+                    "heading": "Configure, Deploy and Test the Read Flow using the ODMRules node",
                     "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
                 "sections":[  					
 {
-						"section": "<b> Configure the Input Message flow to subscribe to alarms/events </b>",
+						"section": "<b> Configure the Read Message flow  </b>",
 						"steps": {
 							"type": "ordered",
 							"details": [{
-										"details": "From the Application Development view, under the App_OPCUA_Input_AlarmEvent application, double-click Flow_OPCUA_InputAE.msgflow to open in the Flow Exerciser. The flow consists of 'OPC-UA-Input', and 'File Output' nodes. "
+										"details": "From the Application Development view, under the App_OPCUA_Read application, double-click Flow_OPCUA_Read.msgflow to open in the Flow Exerciser. The flow consists of 'HTTP Input' , 'OPC-UA-Read', and 'HTTP Reply'"
 									},
 									{
-										"details": "Navigate to the Flow Exerciser and double-click the OPC-UA-Input node to open the OPC-UA-Input Node properties. "
+										"details": "Navigate to the Flow Exerciser and double-click the OPC-UA-Read node to open the OPC-UA-Read Node properties. "
 									},
 									{
 										"details": "From the node properties window, click 'Add' to open the Manufacturing perspective."
@@ -271,10 +324,7 @@
 										"details": "Select the appropriate 'Data source' that was created earlier in the Prepare section."
 									},
 									{
-										"details": "Click on 'Refresh Source Item Tree' to load the Source Items. In Source Items, the <b> red flash </b> means that the object emits events or alarms. This can be used to have a trigger item triggered by an event of that object."
-									},
-									{
-										"details": "From the 'Source Item Tree', select the required node that triggers events / alarms as described above."
+										"details": "Click on 'Refresh Source Item Tree' to load the Source Items. Select the node from the source tree for which you want to read data "
 									},
 									{
 										"details": "From the 'Client Items' tree, right-click on the 'Item' node and select 'Add Mapping Node'"
@@ -286,49 +336,13 @@
 										"details": "Click 'Create Client Item' from the 'Client Item Properties' tab"
 									},
 									{
-										"details": "Once a client item is created using a source object that trigger events, even the client item will have <b> red flash </b>."
+										"details": "Click 'Add Client Item to Read'. The client item is added to the Selected Client Items panel in the 'Select' view. "
 									},
 									{
-										"details": "Click and select the client item."
+										"details": "Navigate back to the Flow Exerciser and double-click the Compute node. Read the values passed from the Read Node and populate the object to be passed as parameter to the ODM Rules node."
 									},
 									{
-										"details": "Click 'Add Trigger Item' and the Add Trigger Item wizard window loads. "
-									},
-									{
-										"details": "Here you can select or add values for <b> Triggered By </b> , <b> Processing Parameter </b> , <b> Event Data </b> and <b> Additional Items </b> "
-									},
-									{
-										"details": "<b> Triggered By:</b> User must select one of the Events or Value Change options from the drop down list, that would trigger Input Node. This could be different event / alarm types or by Value change.For example, in case of UACPP Simulation server, if you select  /Objects/Server/3:AreaAirConditioner/3:AirConditioner_1 , then the Triggered By list shows 3:ControllerEventType / BaseEventType / OffNormalAlarmType . You need to select one of these event types. The Event Data that will be sent along with the event, will vary based on the event type that you select."
-									},
-																		{
-										"details": "<b> Processing Parameter:</b> [Optional] Users have an option to specify value for this property. The specified value is passed as is to the output of the InputNode in the message flow. This value of the ProcessingParameter can then be accessed and used as per the Use Case in the messageflow."
-									},
-									{
-										"details": "<b> Event Data: </b> All the data items that can be delivered with an Event. Properties and variables of the event type object in OPC Server are listed in the Event Data list."
-									},
-									{
-										"details": "At least one checkbox from Event Data must be selected. The event that comes in will have the values attached to it for the selected options. For example, event data can be EventId, EventType, Message etc."
-									},
-									{
-										"details": "<b> Additional Items: </b> After clicking the Add button, the Manufacturing perspective opens again. You can add the additional items by clicking on the 'Add Item to Trigger'. This way additional values can be added to the same trigger item and are listed under the 'Additional Items' list. These values will come along with the trigger (Event)."
-									},
-									{
-										"details": "If we click OK button then the item will be added in Trigger Item List."
-									},									
-									{
-										"details": "Note that the above items added are the additional items. The input node will be triggered by selected Event object in the <b> Triggered By </b> (and not by changes in the client items in the Additional Items List). The data received will have the value for the main event as well as for the additional items."
-									},
-									{
-										"details": "When we try to edit the Trigger Item, it won’t allow to change the Triggered By value (it is disabled). But it will allow to click on 'Add button' to add more items."
-									},
-									{
-										"details": "If we select a source item that does not emit event, then the Triggered By value is shown as Value Change. If the source item has both Value and Event, then both will be seen in the drop down."
-									},
-									{
-										"details": "Navigate back to the Flow Exerciser and double-click the File Output node. The File Output node properties window loads."
-									},
-									{
-										"details": "Click the Basic tab. Specify the directory, file name of the output file where the subscribed event data values should be stored and set the 'Select the mode for writing to file' as 'Write directly to the output file (append if file exists)'."
+										"details": "Navigate back to the Flow Exerciser and double-click the ODMRules node. The ODMRules node properties window loads."
 									},
 									{
 										"details": "Save the flow"
@@ -337,54 +351,61 @@
 						}
 					},
 					{
-							"section": "<b>Deploying the OPC-UA-Input node message flow</b>",
+							"section": "Deploying the Control Flow",
+							"steps": {
+								"type": "ordered",
+								"details": [{
+										"details": "Ensure that you are connected to the Integration Server"
+									},
+									{
+										"details": "From the Application Development view, under the App_OPCUA_Control application right-click the Flow_OPCUA_Control.msgflow and select 'Deploy'."
+									}, {
+										"details": "In the Deploy window, select the Integration Server that you have started, and Click 'Finish'."
+									}, {
+										"details": "Click 'Ok' to confirm the deployment. The control flow application name is displayed under the selected integration server from the Integration Nodes view. "
+									}
+								]
+							}
+						},
+
+						{
+							"section": "Deploying the OPC-UA-Read node message flow",
 							"steps": {
 								"type": "ordered",
 								"details": [{
 										"details": "Ensure that you are connected to an Integration Server."
 									},
 									{
-										"details": "From the Application Development view , right-click the Flow_OPCUA_InputAE.msgflow and select 'Deploy'."
+										"details": "From the Application Development view , right-click the Flow_OPCUA_Read.msgflow and select 'Deploy'."
 									}, 
 									{
 										"details": "In the Deploy window, select the integration server that you have started, and click Finish."
 									}, 
 									{
-										"details": "Click 'Ok' to confirm the deployment.The App_OPCUA_Input_AlarmEvent application name is displayed under the selected integration server from Integration Nodes view." 
+										"details": "Click 'Ok' to confirm the deployment.The App_OPCUA_Read application name is displayed under the selected integration server from Integration Nodes view." 
 									}
+
 								]
 							}
 						},
 
 					{
-						"section": "<b>Test the Input Flow</b> ",
+						"section": "<b>Test the Input-ODM Flow</b> ",
 						"steps": {
 							"type": "ordered",
 							"details": [
 								{
-									"details": "The OPC-UA-Input node automatically triggers the flow to run when the specified alarm or event is triggered by the OPC Server."
+									"details": "The OPC-UA-Input node automatically triggers the flow to run when the specified data is changed on the OPC Server."
 								},
 								{
-									"details": "The Alarm / Event data is stored in an output file by using the File Output node."
+									"details": "The changed value is then used to populate the XOM object in the Compute Node to construct the parameter for the ODMRules Node."
+								},
+								{
+									"details": "ODMRules Node connects to the ODMRules server and executes the selected Rule with the specified properties. The value returned by the Rules server is stored in an output file by using the File Output node."
 								}
 							]
 						}
-					},
-					{
-						"section": "<b>Additional Steps for Alarms</b>",
-						"steps": {
-							"type": "ordered",
-							"details": [
-								{
-									"details": "If you have subscribed to Alarms, then you may need to acknowledge the alarm or invoke some methods on the OPCServer as per configuration on the OPCServer."
-								},
-								{
-									"details": "This can be done by adding an OPC-UA-Method-Call node in the above flow and invoking the method to acknowledge the alarm or calling any other required method. "
-								}
-							]
-						}
-					}
-							   							   
+					}						   							   
                     ]
                 },
                 "helpLinks": 
@@ -410,4 +431,5 @@
             }
         }
     }
+
 }

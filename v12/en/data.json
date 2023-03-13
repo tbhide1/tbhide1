@@ -32,7 +32,7 @@
 	{
 		"_common": 
 		{
-			"name": "App Connect for Manufacturing - Integration with the IBM Operational Decision Manager (ODM) using the ODMRules Node",
+			"name": "App Connect for Manufacturing - Using the OPC-UA-Input node to subscribe to alarms and events from an OPC Server",
 			"shortDescription": "Create one simple message flow by using the OPC-UA-Read node and ODMRules node to connect to an ODM Server. This tutorial requires an installation of App Connect for Manufacturing and set up of the Operational Decision Manager. This tutorial assumes you are familiar with the creation of Rules in the Rules Designer and deploying the rules on the Rules Execution Server.",
 			"durationText": "This tutorial takes approximately",
 			"durationTime": "20 minutes",

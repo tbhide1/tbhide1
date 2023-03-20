@@ -32,8 +32,8 @@
 	{
 		"_common": 
 		{
-			"name": "App Connect for Manufacturing - Using the OPC-UA-Input node to subscribe to alarms and events from an OPC Server",
-			"shortDescription": "Create one simple message flow by using the OPC-UA-Read node and ODMRules node to connect to an ODM Server. This tutorial requires an installation of App Connect for Manufacturing and set up of the Operational Decision Manager. This tutorial assumes you are familiar with the creation of Rules in the Rules Designer and deploying the rules on the Rules Execution Server.",
+			"name": "App Connect for Manufacturing - Integration with the IBM Operational Decision Manager (ODM) using the ODM Rules Node",
+			"shortDescription": "Create one simple message flow by using the OPC-UA-Read node and ODM Rules node to connect to an ODM Server. This tutorial requires an installation of App Connect for Manufacturing and set up of the Operational Decision Manager. This tutorial assumes you are familiar with the creation of Rules in the Rules Designer and deploying the rules on the Rules Execution Server.",
 			"durationText": "This tutorial takes approximately",
 			"durationTime": "20 minutes",
 			"_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json.",
@@ -65,20 +65,20 @@
 					"title": "Creating a policy project"
 				},
 				{
-					"title": "Configuring the OPC-UA-Read node message flow and integrate with the ODM Rules node."
+					"title": "Configuring the OPC-UA-Read node message flow and integrating with the ODM Rules node."
 				},				
 				{
 					"title": "Deploying the message flows"
 				}
 			],
 			"outcomesName": "Learning outcomes",
-			"_outcomesComment": "Learn how to create one simple message flow by using the OPC-UA-Read node and ODMRules node to connect to an ODM Server.",			
+			"_outcomesComment": "Learn how to create one simple message flow by using the OPC-UA-Read node and ODM Rules node to connect to an ODM Server.",			
 			"outcomeList": [{
-				"title": "Learn how to create one simple message flow by using the OPC-UA-Read node and ODMRules node to connect to an ODM Server."
+				"title": "Learn how to create one simple message flow by using the OPC-UA-Read node and ODM Rules node to connect to an ODM Server."
 			}],
             "summary": {
 				"overviewName": "OVERVIEW",
-				"_overviewComment": "This tutorial demonstrates how to create one simple message flow by using the OPC-UA-Read node and ODMRules node to connect to an ODM Server. ",
+				"_overviewComment": "This tutorial demonstrates how to create one simple message flow by using the OPC-UA-Read node and ODM Rules node to connect to an ODM Server. ",
 				"sections": [
 					{
 						"section": "This tutorial assumes you have installed and configured IBM Operational Decision Manager(ODM) and that you are familiar with Rules development and deployment on the Rules Server. For more information, see Installing IBM ODM in the help links provided below."
@@ -91,13 +91,13 @@
 						"section": "You must create an integration server before you can deploy integration solutions and related resources. You will also need to connect your Toolkit to an OPC server."
 					},
 					{
-						"section": "You can try out this message flow by simply importing the two provided projects. One application project contains a control flow and another application project contains a read flow."
+						"section": "You can try out this message flow by simply importing the two provided projects. One application project contains a control flow and another application project contains a read flow using the OPC-UA-Read and ODM Rules node."
 					},
 					{
 						"section": "The tutorial will guide you through deploying and starting both flows."
 					},
 					{
-						"section": "The read flow is driven using its HTTP Input node, which triggers the flow to run. The OPC-UA-Read node then reads data from the connected OPC server. The response from the message flow is then returned to the HTTP client by the HTTP Reply node."
+						"section": "The read flow is driven using its HTTP Input node, which triggers the flow to run. The OPC-UA-Read node then reads data from the connected OPC server. Next, the ODM Rules node is invoked for the exection of the Decision Rules. The response from the message flow is then returned to the HTTP client by the HTTP Reply node."
 					}								
 				]
 			},			
@@ -112,8 +112,8 @@
 						},
 						{
 							"title": "Knowledge Center link to ",
-							"description": "Installing and uninstalling IBM Operational Decision Manager",
-							"link": "https://www.ibm.com/docs/en/odm/8.11.0",
+							"description": "IBM Operational Decision Manager",
+							"link": "https://www.ibm.com/docs/en/odm/8.11.1?topic=8111-overview-operational-decision-manager",
 							"type": "web"
 						}											
 						]
@@ -127,10 +127,10 @@
 					"_createComment": "A description of what will happen when the user clicks Import.",
 					"sections": [						
 						{
-							"section": "Click <span class='uicontrol'>Import</span> and the <span class='uicontrol'>App_OPCUA_ODMRules</span> and <span class='uicontrol'>App_OPCUA_Control</span> applications will be imported into your workspace."
+							"section": "Click <span class='uicontrol'>Import</span> and the <span class='uicontrol'>App_OPCUA_ODM</span> and <span class='uicontrol'>App_OPCUA_Control</span> applications will be imported into your workspace."
 						},						
 						{
-							"section": "The <span class='uicontrol'>App_OPCUA_ODMRules</span> application contains <span class='uicontrol'>Flow_OPCUA_ODM.msgflow</span> while <span class='uicontrol'>App_OPCUA_Control</span> contains <span class='uicontrol'>Flow_OPCUA_Control.msgflow</span>."
+							"section": "The <span class='uicontrol'>App_OPCUA_ODM</span> application contains <span class='uicontrol'>Flow_OPCUA_ODM.msgflow</span> while <span class='uicontrol'>App_OPCUA_Control</span> contains <span class='uicontrol'>Flow_OPCUA_Control.msgflow</span>."
 						}
 					]
 				},
@@ -146,6 +146,12 @@
 						"title": "IBM Documentation link to ",
 						"description": "Developing Message Flow applications",
 						"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=manufacturing-developing-message-flow-applications",
+						"type": "web"
+					},
+					{
+						"title": "IBM Documentation link to ",
+						"description": "Installing IBM Operational Decision Manager",
+						"link": "https://www.ibm.com/docs/en/odm/8.11.1?topic=8111-installing",
 						"type": "web"
 					}
 					
@@ -167,10 +173,10 @@
 			{
 				"overview": {
 				"name": "Prepare",
-				"heading": "Prepare for Read Flow using ODMRules node",
+				"heading": "Prepare for Read Flow using ODM Rules node",
 				"_prepareComment": "Prepare for Read Flow using ODMRules node",
 				"sections": [{
-							"section": "Creating a Data Source connection to an OPC Server",
+							"section": "<b<Creating a Data Source connection to an OPC Server</b>",
 							"steps": {
 								"type": "ordered",
 								"details": [{
@@ -207,7 +213,7 @@
 						}
 					},		
 					{
-						"section": "Creating and starting an Integration Server",
+						"section": "<b>Creating and starting an Integration Server</b>",
 						"steps": {
 							"type": "ordered",
 							"details": [
@@ -238,7 +244,7 @@
 						}
 					},
 					{
-						"section": "Creating secure vault using mqsicredentials for the Integration Server",
+						"section": "<b>Creating secure vault using mqsicredentials for the Integration Server</b>",
 						"steps": {
 							"type": "ordered",
 							"details": [
@@ -258,7 +264,7 @@
 						}
 					},
 					{
-						"section": "Creating a policy project",
+						"section": "<b>Creating a policy project</b>",
 						"steps": {
 							"type": "ordered",
 							"details": [
@@ -351,7 +357,7 @@
 						}
 					},
 					{
-							"section": "Deploying the Control Flow",
+							"section": "<b>Deploying the Control Flow</b>",
 							"steps": {
 								"type": "ordered",
 								"details": [{
@@ -369,7 +375,7 @@
 						},
 
 						{
-							"section": "Deploying the OPC-UA-Read node message flow",
+							"section": "<b>Deploying the OPC-UA-Read node message flow</b>",
 							"steps": {
 								"type": "ordered",
 								"details": [{

@@ -41,15 +41,7 @@
 			"helpLink": {
 				"text": "IBM Documentation",
 				"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=manufacturing-app-connect-overview"
-			},
-			{
-				"title": "Knowledge Center link to ",
-				"description": "IBM Operational Decision Manager",
-				"link": "https://www.ibm.com/docs/en/odm/8.11.1?topic=8111-overview-operational-decision-manager",
-				"type": "web"
-			}				
-		
-		
+			}		
 		},
 		"pageDetails": {
 			"topicsName": "Tutorial Topics",

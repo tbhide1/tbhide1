@@ -409,6 +409,12 @@
 										"details": "In our example project, the OPC-UA-Read node reads the Temperature and Humidity of an AirConditioner system." 
 									},
 									{
+										"details": "From the OPC-UA-Read node, select the <b>Input Message Parsing</b> and select the <b>Message domain</b> as 'XMLNSC : For XML messages (namespace aware, validation, low memory use)'" 
+									},
+									{
+										"details": "Navigate back to the Flow Exerciser and click on the first Compute node in the flow. In the Compute Node Properties, specify the 'Compute Mode' as 'LocalEnvironment and Message'"
+									},
+									{
 										"details": "Navigate back to the Flow Exerciser and double-click the first Compute node in the flow. In the Compute node, read the values passed from the Read Node and populate the object to be passed as parameter to the ODM Rules node. In our sample example, we use the ACObject object to be passed to the ODM Rules node. The schema for this object is that specified in the XOM for the Rule and that is specified in the ODM Rules Node as described next."
 									},
 									{
@@ -428,6 +434,9 @@
 									},
 									{
 										"details": "Click on the <b> Data Location </b> to load the XPath Expression Builder Window. Specify the XPath Expression. For example: '$LocalEnvironment/ACObject'. This is the object that needs to be created in the first Compute node as described above. Click on 'Finish' to close the window."
+									},
+									{
+										"details": "Navigate back to the Flow Exerciser and click on the second Compute node in the flow. In the Compute Node Properties, specify the 'Compute Mode' as 'Message' for our sample example."
 									},
 									{
 										"details": "From the Flow exerciser, double click on the second Compute node in the flow. In this Compute node, we can read the value returned from the ODM Rules node and captured in the object specified above."

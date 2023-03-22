@@ -33,7 +33,7 @@
 		"_common": 
 		{
 			"name": "App Connect for Manufacturing - Integration with the IBM Operational Decision Manager (ODM) using the ODM Rules Node",
-			"shortDescription": "Create one simple message flow by using the OPC-UA-Read node and ODM Rules node to connect to an ODM Server. This tutorial requires an installation of App Connect for Manufacturing and set up of the Operational Decision Manager. This tutorial assumes you are familiar with the creation of Rules in the Rules Designer and deploying the rules on the Rules Execution Server.",
+			"shortDescription": "Create one simple message flow by using the OPC-UA-Read node and ODM Rules node to connect to an ODM Server. This tutorial requires an installation of App Connect for Manufacturing and set up of the IBM Operational Decision Manager. This tutorial assumes you are familiar with the creation of Rules in the Rules Designer and deploying the Rules on the Rules Execution Server.",
 			"durationText": "This tutorial takes approximately",
 			"durationTime": "20 minutes",
 			"_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json.",
@@ -41,7 +41,13 @@
 			"helpLink": {
 				"text": "IBM Documentation",
 				"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=manufacturing-app-connect-overview"
-			}		
+			},
+			{
+				"title": "Knowledge Center link to ",
+				"description": "IBM Operational Decision Manager",
+				"link": "https://www.ibm.com/docs/en/odm/8.11.1?topic=8111-overview-operational-decision-manager",
+				"type": "web"
+			}				
 		
 		
 		},
@@ -91,7 +97,7 @@
 						"section": "You must create an integration server before you can deploy integration solutions and related resources. You will also need to connect your Toolkit to an OPC server."
 					},
 					{
-						"section": "You can try out this message flow by simply importing the two provided projects. One application project contains a control flow and another application project contains a read flow using the OPC-UA-Read and ODM Rules node."
+						"section": "You can try out this message flow by simply importing the three provided projects. One application project contains a control flow and another application project contains a read flow using the OPC-UA-Read and ODM Rules node.The third project is a Policy project."
 					},
 					{
 						"section": "The tutorial will guide you through deploying and starting both flows."
@@ -127,11 +133,15 @@
 					"_createComment": "A description of what will happen when the user clicks Import.",
 					"sections": [						
 						{
-							"section": "Click <span class='uicontrol'>Import</span> and the <span class='uicontrol'>App_OPCUA_ODM</span> and <span class='uicontrol'>App_OPCUA_Control</span> applications will be imported into your workspace."
+							"section": "Click <span class='uicontrol'>Import</span> and the <span class='uicontrol'>App_OPCUA_ODM</span> , <span class='uicontrol'>App_OPCUA_Control</span> and <span class='uicontrol'>Policy_OPCUA_ODM</span> applications will be imported into your workspace."
 						},						
 						{
 							"section": "The <span class='uicontrol'>App_OPCUA_ODM</span> application contains <span class='uicontrol'>Flow_OPCUA_ODM.msgflow</span> while <span class='uicontrol'>App_OPCUA_Control</span> contains <span class='uicontrol'>Flow_OPCUA_Control.msgflow</span>."
+						},
+						{
+							"section": "The <span class='uicontrol'>Policy_OPCUA_ODM</span> project contains an ODM policy that specifies the parameters to connect to the ODM Rules Server."
 						}
+						
 					]
 				},
  				"helpLinks": {
@@ -153,6 +163,18 @@
 						"description": "Installing IBM Operational Decision Manager",
 						"link": "https://www.ibm.com/docs/en/odm/8.11.1?topic=8111-installing",
 						"type": "web"
+					},
+					{
+							"title": "Knowledge Center link to ",
+							"description": "IBM App Connect for Manufacturing overview",
+							"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=manufacturing-app-connect-overview",
+							"type": "web"
+					},
+					{
+							"title": "Knowledge Center link to ",
+							"description": "IBM Operational Decision Manager",
+							"link": "https://www.ibm.com/docs/en/odm/8.11.1?topic=8111-overview-operational-decision-manager",
+							"type": "web"
 					}
 					
 					]
@@ -188,29 +210,25 @@
 										"details": "For further information on Rules, please refer to https://www.ibm.com/docs/en/odm/8.11.1?topic=8111-decision-server-rules"
 									},
 									{
-										"details": "In the sample example, we create XOM using the XML schema definition. The sample XSD used is as below: "
+										"details": "In the sample example, we create XOM using the XML schema definition 'SimpleAirConditionerObject.xsd' which is located under the APP_OPCUA_ODM --> XML and DFDL Schemas under the Application Development. "
 									},
 									{
-										"details": "\<ACObject\>"
-									},
-									{
-										"details": "In this example, we would give the 'temperature' and 'humidity' as input values and expect the 'result' in the status parameter."
+										"details": "In this example, we have specified the 'temperature' and 'humidity' as input values and the outcome of the Decision Rule  is expected in the 'status' parameter."
 									},
 									{
 										"details": "For more details on the creating XOM and BOM  please refer to https://www.ibm.com/docs/en/odmoc?topic=model-overview-dynamic-execution-object-xom"
 									},
-									
 									{
-										"details": "Import the sample XSD in the Rules project --> Import XOM"
+										"details": "Import the sample XSD in the Rules project --> Import XOM  , using the Rules Designer."
 									},
 									{
-										"details": "Create BOM from the XOM created in the above step"
+										"details": "Create BOM from the XOM created in the above step."
 									},
 									{
 										"details": "Add the Decision Operation. Add a new Variable set and specify the input output parameters for the rule set."
 									},
 									{
-										"details": "In our sample example, we can specify the AirConditionerObject as Input-Output parameter. This implies that the same object that we pass as parameter to the ODM Rules node will contain the output result as well."
+										"details": "In our sample example, we need to specify the AirConditionerObject as Input-Output parameter. This implies that the same object that we pass as parameter to the ODM Rules node will contain the output result as well."
 									},
 									{
 										"details": "Finally, create and deploy the Rule Set on the Rules Execution server."

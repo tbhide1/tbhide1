@@ -96,7 +96,7 @@
 						"section": "The tutorial will guide you through deploying and starting both flows."
 					},
 					{
-						"section": "The read flow is driven using its HTTP Input node, which triggers the flow to run. The OPC-UA-Read node then reads data from the connected OPC server. Next, the ODM Rules node is invoked for the exection of the Decision Rules. The response from the message flow is then returned to the HTTP client by the HTTP Reply node."
+						"section": "The read flow is driven using its HTTP Input node, which triggers the flow to run. The OPC-UA-Read node then reads data from the connected OPC server. Next, the ODM Rules node is invoked for the execution of the Decision Rules. The response from the message flow is then returned to the HTTP client by the HTTP Reply node."
 					}								
 				]
 			},			
@@ -421,7 +421,7 @@
 										"details": "<b>Policy</b> specifies the ODM Server policy that is created to access the Rules Server as described in the section for <b>Creating a policy project</b>."
 									},
 									{
-										"details": "<b>Ruleset path </b> configuration enables us to connect to the Rules server and select the required rule application and rule set to be applied on the invokation of the ODM Rules node."
+										"details": "<b>Ruleset path </b> configuration enables us to connect to the Rules server and select the required rule application and rule set to be applied on the invocation of the ODM Rules node."
 									},
 									{
 										"details": "After selecting the Ruleset path, the appropriate Parameters are loaded. "
@@ -473,7 +473,7 @@
 										"details": "In the Deploy window, select the integration server that you have started, and click Finish."
 									}, 
 									{
-										"details": "Click 'Ok' to confirm the deployment.The App_OPCUA_ODM , App_OPCUA_Control and Policy_OPCUA_ODM_Project is displayed under the selected integration server from Integration Nodes view." 
+										"details": "Click 'Ok' to confirm the deployment.The App_OPCUA_ODM , App_OPCUA_Control and Policy_OPCUA_ODM_Project are displayed under the selected integration server from Integration Nodes view." 
 									}
 
 								]
@@ -481,7 +481,7 @@
 						},
 
 					{
-							"section": "Testing the Flow_OPCUA_ODM Flow using the Flow Exerciser",
+							"section": "<b>Testing the Flow_OPCUA_ODM Flow using the Flow Exerciser</b>",
 							"steps": {
 								"type": "ordered",
 								"details": [
@@ -507,7 +507,7 @@
 										"details": "Click on the link between first Compute node and the ODM Rules node to view the Input Ruleset parameter object ACObject in the LocalEnvironment tree."
 									},
 									{
-										"details": "Click on the link between ODM Rules node and the second Compute node to view the returned 'Status' in the Ruleset paramter object ACObject in the LocalEnvironment tree."
+										"details": "Click on the link between ODM Rules node and the second Compute node to view the returned 'Status' in the Ruleset parameter object ACObject in the LocalEnvironment tree."
 									},
 									{
 										"details": "To stop recording the message path through the flow, click the 'Return flow to edit mode' icon."

@@ -173,9 +173,58 @@
 			{
 				"overview": {
 				"name": "Prepare",
-				"heading": "Prepare for Read Flow using ODM Rules node",
-				"_prepareComment": "Prepare for Read Flow using ODMRules node",
-				"sections": [{
+				"heading": "Prepare for the flow using ODM Rules node",
+				"_prepareComment": "Prepare for flow using ODM Rules node",
+				"sections": [
+				{
+						"section": "<b>Creating and Deploying Rules project</b>",
+						"steps": {
+							"type": "ordered",
+							"details": [
+									{
+										"details": "This section assumes you have installed and configured IBM Operational Decision Manager. It also assumes that you have  knowledge and understanding of creating rules project, specifying XOM object, creating BOM from XOM, defining the rule operation , specifying rules using action rule / Decision Table etc., and finally the deployment of the rule set.  "
+									},
+									{
+										"details": "For further information on Rules, please refer to https://www.ibm.com/docs/en/odm/8.11.1?topic=8111-decision-server-rules"
+									},
+									{
+										"details": "In the sample example, we create XOM using the XML schema definition. The sample XSD used is as below: "
+									},
+									{
+										"details": "<?xml version=\"1.0\"? > "
+									},
+									{
+										"details": "<?xml version=\"1.0\"?><br><schema xmlns=\"http://www.w3.org/2001/XMLSchema\" targetNamespace=\"http://www.ibm.com/acmfg-odm/examples/simpleschema\"><br><element name=\"AirConditionerObject\"><br><complexType><br>         <sequence><br>        <element name=\"humidity\"type=\"float\"/><br>      <element name=\"status\" type=\"string\"/><br>         </sequence><br>       </complexType><br>   </element><br></schema>"
+									},
+									{
+										"details": "In this example, we would give the 'temperature' and 'humidity' as input values and expect the 'result' in the status parameter."
+									},
+									{
+										"details": "For more details on the creating XOM and BOM  please refer to https://www.ibm.com/docs/en/odmoc?topic=model-overview-dynamic-execution-object-xom"
+									},
+									
+									{
+										"details": "Import the sample XSD in the Rules project --> Import XOM"
+									},
+									{
+										"details": "Create BOM from the XOM created in the above step"
+									},
+									{
+										"details": "Add the Decision Operation. Add a new Variable set and specify the input output parameters for the rule set."
+									},
+									{
+										"details": "In our sample example, we can specify the AirConditionerObject as Input-Output parameter. This implies that the same object that we pass as parameter to the ODM Rules node will contain the output result as well."
+									},
+									{
+										"details": "Finally, create and deploy the Rule Set on the Rules Execution server."
+									
+									}									
+							]
+						}
+				},
+				
+				
+				{
 							"section": "<b>Creating a Data Source connection to an OPC Server</b>",
 							"steps": {
 								"type": "ordered",
@@ -281,7 +330,7 @@
 										"details": "<b>ODM Jars URL</b> specifies the file location of the IBM ODM Execution Server Client Jar files to be used by the policy. For example: C:\\IBM\\ODM\\executionserver\\lib. You will need to copy these jars from the ODM Execution server to the machine that is running the Integration Server."
 									},
 									{
-										"details": "<b>secureIdentity </b> specifies the secure identity containing the credentials to be used for accessing the Rule Execution Server. For example, you need to specify the credential name created in the above step: odmCred  "
+										"details": "<b>secureIdentity </b> specifies the secure identity containing the credentials to be used for accessing the Rule Execution Server. In our sample example, credential name is odmCred as described in the section <b>Creating secure vault using mqsicredentials for the Integration Server</b> "
 									},
 									{
 										"details": "Rest of the properties can be selected as default."
@@ -314,7 +363,7 @@
                     "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
                 "sections":[  					
 {
-						"section": "<b> Configure the Read Message flow  </b>",
+						"section": "<b> Configure the ODM Rules Message flow  </b>",
 						"steps": {
 							"type": "ordered",
 							"details": [{
@@ -345,10 +394,31 @@
 										"details": "Click 'Add Client Item to Read'. The client item is added to the Selected Client Items panel in the 'Select' view. "
 									},
 									{
-										"details": "Navigate back to the Flow Exerciser and double-click the Compute node. Read the values passed from the Read Node and populate the object to be passed as parameter to the ODM Rules node."
+										"details": "In our example project, the OPC-UA-Read node reads the Temperature and Humidity of an AirConditioner system." 
 									},
 									{
-										"details": "Navigate back to the Flow Exerciser and double-click the ODMRules node. The ODMRules node properties window loads."
+										"details": "Navigate back to the Flow Exerciser and double-click the first Compute node in the flow. In the Compute node, read the values passed from the Read Node and populate the object to be passed as parameter to the ODM Rules node. In our sample example, we use the ACObjQuick object to be passed to the ODM Rules node. The schema for this object is that specified in the XOM for the Rule and that is specified in the ODM Rules Node as described next."
+									},
+									{
+										"details": "Navigate back to the Flow Exerciser and double-click on the ODM Rules node. The ODM Rules node properties window loads. "
+									},
+									{
+										"details": "Specify the properties of the ODM Rules node as described in  https://www.ibm.com/docs/en/app-connect/11.0.0?topic=nodes-odmrules-node "
+									},
+									{
+										"details": "<b>Policy</b> specifies the ODM Server policy that is created to access the Rules Server as described in the section for <b>Creating a policy project</b>."
+									},
+									{
+										"details": "<b>Ruleset path </b> configuration enables us to connect to the Rules server and select the required rule application and rule set to be applied on the invokation of the ODM Rules node."
+									},
+									{
+										"details": "After selecting the Ruleset path, the appropriate Parameters are loaded. "
+									},
+									{
+										"details": "Click on the <b> Data Location </b> to load the XPath Expression Builder Window. Specify the XPath Expression. For example: '$LocalEnvironment/ACObjQuick'. This is the object that needs to be created in the first Compute node as described above. Click on 'Finish' to close the window."
+									},
+									{
+										"details": "From the Flow exerciser, double click on the second Compute node in the flow. In this Compute node, we can read the value returned from the ODM Rules node and captured in the object specified above."
 									},
 									{
 										"details": "Save the flow"
@@ -375,20 +445,23 @@
 						},
 
 						{
-							"section": "<b>Deploying the OPC-UA-Read node message flow</b>",
+							"section": "<b>Deploying the Policy project and ODM Rules node message flow</b>",
 							"steps": {
 								"type": "ordered",
 								"details": [{
 										"details": "Ensure that you are connected to an Integration Server."
 									},
 									{
-										"details": "From the Application Development view , right-click the Flow_OPCUA_Read.msgflow and select 'Deploy'."
+										"details": "From the Application Development view , right-click the Policy project for ODM server policy created earlier, and select 'Deploy'."
+									}, 
+									{
+										"details": "From the Application Development view , right-click the Flow_OPCUA_ODM.msgflow and select 'Deploy'."
 									}, 
 									{
 										"details": "In the Deploy window, select the integration server that you have started, and click Finish."
 									}, 
 									{
-										"details": "Click 'Ok' to confirm the deployment.The App_OPCUA_Read application name is displayed under the selected integration server from Integration Nodes view." 
+										"details": "Click 'Ok' to confirm the deployment.The App_OPCUA_ODM application name is displayed under the selected integration server from Integration Nodes view." 
 									}
 
 								]
@@ -396,22 +469,40 @@
 						},
 
 					{
-						"section": "<b>Test the Input-ODM Flow</b> ",
-						"steps": {
-							"type": "ordered",
-							"details": [
-								{
-									"details": "The OPC-UA-Input node automatically triggers the flow to run when the specified data is changed on the OPC Server."
-								},
-								{
-									"details": "The changed value is then used to populate the XOM object in the Compute Node to construct the parameter for the ODMRules Node."
-								},
-								{
-									"details": "ODMRules Node connects to the ODMRules server and executes the selected Rule with the specified properties. The value returned by the Rules server is stored in an output file by using the File Output node."
-								}
-							]
-						}
-					}						   							   
+							"section": "Testing the Flow_OPCUA_ODM Flow using the Flow Exerciser",
+							"steps": {
+								"type": "ordered",
+								"details": [
+									{
+										"details": "Ensure that your Integration Server is started."
+									},	
+									{
+										"details": "Navigate to the Flow Exerciser of the Flow_OPCUA_ODM.msgflow."
+									},										
+									{
+										"details": "In the editor, click the Start Flow Exerciser icon in red: <img src='https://ot4i.github.io/iib-tutorials/images/icons/iib/startFlowExerciser.png' alt='' /> to start recording the message path through the flow. "
+									},
+									{
+										"details": "Click the Send Message icon <img src='https://ot4i.github.io/iib-tutorials/images/icons/iib/sendMessage.png' alt='' /> to select a message to send to the flow."
+									},
+									{
+										"details": "You can right-click on 'InputMessage' to add a new message and then click on 'Send' button. Your request message is sent to the HTTP input node. After the request message is processed, the message path is automatically highlighted on the message flow."
+									},
+									{
+										"details": "Click on any connection on the message box to see the data that passed through that connection."
+									},
+									{
+										"details": "Click on the link between first Compute node and the ODM Rules node to view the Input Ruleset paramter object in the LocalEnvironment tree."
+									},
+									{
+										"details": "Click on the link between first ODM Rules node and the second Compute node to view the returned result in the Ruleset paramter object in the LocalEnvironment tree."
+									},
+									{
+										"details": "To stop recording the message path through the flow, click the 'Return flow to edit mode' icon."
+									}
+								]
+							}
+						}						   							   
                     ]
                 },
                 "helpLinks": 

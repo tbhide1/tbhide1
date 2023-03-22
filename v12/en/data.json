@@ -339,10 +339,10 @@
 										"details": "<b>Rule Execution Server URL</b> specifies the URL of the Rules Execution Server. For example,http://localhost:9080/res/ "
 									},
 									{
-										"details": "<b>ODM Jars URL</b> specifies the file location of the IBM ODM Execution Server Client Jar files to be used by the policy. For example: C:\\IBM\\ODM\\executionserver\\lib. You will need to copy these jars from the ODM Execution server to the machine that is running the Integration Server."
+										"details": "<b>ODM Jars URL</b> specifies the file location of the IBM ODM Execution Server Client Jar files to be used by the policy. For example: C:\\IBM\\ODM\\executionserver\\lib. You will need to copy the jars from the ODM Execution server to the machine that is running the Integration Server and specify the folder location accordingly."
 									},
 									{
-										"details": "<b>secureIdentity </b> specifies the secure identity containing the credentials to be used for accessing the Rule Execution Server. In our sample example, credential name is odmCred as described in the section <b>Creating secure vault using mqsicredentials for the Integration Server</b> "
+										"details": "<b>secureIdentity </b> specifies the secure identity containing the credentials to be used for accessing the Rule Execution Server. In our sample example, credential name is <b>odmCred</b> as described in the section <b>Creating secure vault using mqsicredentials for the Integration Server</b> "
 									},
 									{
 										"details": "Rest of the properties can be selected as default."

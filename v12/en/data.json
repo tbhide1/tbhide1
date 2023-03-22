@@ -191,10 +191,7 @@
 										"details": "In the sample example, we create XOM using the XML schema definition. The sample XSD used is as below: "
 									},
 									{
-										"details": "<?xml version=\"1.0\"? > "
-									},
-									{
-										"details": "<?xml version=\"1.0\"?><br><schema xmlns=\"http://www.w3.org/2001/XMLSchema\" targetNamespace=\"http://www.ibm.com/acmfg-odm/examples/simpleschema\"><br><element name=\"AirConditionerObject\"><br><complexType><br>         <sequence><br>        <element name=\"humidity\"type=\"float\"/><br>      <element name=\"status\" type=\"string\"/><br>         </sequence><br>       </complexType><br>   </element><br></schema>"
+										"details": "<element name=\"AirConditionerObject\"><br><complexType><br>         <sequence><br>        <element name=\"humidity\"type=\"float\"/><br>      <element name=\"status\" type=\"string\"/><br>         </sequence><br>       </complexType><br>   </element><br></schema>"
 									},
 									{
 										"details": "In this example, we would give the 'temperature' and 'humidity' as input values and expect the 'result' in the status parameter."

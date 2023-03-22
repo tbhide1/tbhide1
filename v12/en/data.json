@@ -406,7 +406,10 @@
 										"details": "Click 'Add Client Item to Read'. The client item is added to the Selected Client Items panel in the 'Select' view. "
 									},
 									{
-										"details": "In our example project, the OPC-UA-Read node reads the Temperature and Humidity of an AirConditioner system." 
+										"details": "In our example project, /Item/AC1_temperature and /Item/AC1_humidity are the two client items corresponding to the Temperature and Humidity of an AirConditioner system." 
+									},
+									{
+										"details": "These client item names are referenced in the first Compute Node. You will need to update Compute node in case the client items have names other than the ones mentioned above." 
 									},
 									{
 										"details": "From the OPC-UA-Read node, select the <b>Input Message Parsing</b> and select the <b>Message domain</b> as 'XMLNSC : For XML messages (namespace aware, validation, low memory use)'" 

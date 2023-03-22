@@ -191,7 +191,7 @@
 										"details": "In the sample example, we create XOM using the XML schema definition. The sample XSD used is as below: "
 									},
 									{
-										"details": "<element name=\"AirConditionerObject\"><br><complexType><br>"
+										"details": "ACObject"
 									},
 									{
 										"details": "In this example, we would give the 'temperature' and 'humidity' as input values and expect the 'result' in the status parameter."

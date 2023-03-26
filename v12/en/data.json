@@ -114,7 +114,13 @@
 							"description": "IBM Operational Decision Manager",
 							"link": "https://www.ibm.com/docs/en/odm/8.11.1?topic=8111-overview-operational-decision-manager",
 							"type": "web"
-						}											
+						},
+						{
+							"title": "Knowledge Center link to ",
+							"description": "Integrating with IBM Operational Decision Manager using Java Compute Node in ACE",
+							"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=uodmobr-executing-odm-business-rules-by-using-javacompute-node",
+							"type": "web"
+						}							
 						]
 			}
 		},
@@ -168,7 +174,13 @@
 							"description": "IBM Operational Decision Manager",
 							"link": "https://www.ibm.com/docs/en/odm/8.11.1?topic=8111-overview-operational-decision-manager",
 							"type": "web"
-					}
+					},
+					{
+							"title": "Knowledge Center link to ",
+							"description": "Integrating with IBM Operational Decision Manager using Java Compute Node in ACE",
+							"link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=uodmobr-executing-odm-business-rules-by-using-javacompute-node",
+							"type": "web"
+					}	
 					
 					]
 				},
@@ -203,7 +215,7 @@
 										"details": "For further information on Rules, please refer to https://www.ibm.com/docs/en/odm/8.11.1?topic=8111-decision-server-rules"
 									},
 									{
-										"details": "In the sample example, we create XOM using the Java definition in 'SimpleAirConditionerObject.jar' which is located under the APP_OPCUA_ODM --> XML and DFDL Schemas, under the Application Development. "
+										"details": "In the sample example, we create XOM using the Java definition in 'SimpleAirConditionerObject.jar' which is located under the APP_OPCUA_ODM_JCN --> Other Resources, under the Application Development. "
 									},
 									{
 										"details": "In this example, we have specified the 'temperature' and 'humidity' as input values and the outcome of the Decision Rule is expected in the 'status' parameter."
@@ -221,10 +233,10 @@
 										"details": "Add the Decision Operation. Add a new Variable set and specify the input output parameters for the rule set."
 									},
 									{
-										"details": "In our sample example, we need to specify the AirConditionerObject as Input-Output parameter. This implies that the object that we pass as parameter to the ODM Rules Java API will contain the output result as well."
+										"details": "In our sample example, we need to specify the <b> ACObject </b> as Input-Output parameter. This implies that the object that we pass as parameter to the ODM Rules Java API will contain the output result as well."
 									},
 									{
-										"details": "Create the rule using option such as Action Rule or Decision Table. For example, rule in the Decision table could return Status of the AirConditionerObject as 'ALARM' if the temperature is greater than a certain value."
+										"details": "Create the rule using option such as Action Rule or Decision Table. For example, rule in the Decision table could return Status of the ACObject as 'ALARM' if the temperature is greater than a certain value."
 									
 									},	
 									{
@@ -409,43 +421,70 @@
 										"details": "In our example project, /Item/AC1_temperature and /Item/AC1_humidity are the two client items corresponding to the Temperature and Humidity of an AirConditioner system." 
 									},
 									{
-										"details": "These client item names are referenced in the first Compute Node. You will need to update Compute node in case the client items have names other than the ones mentioned above." 
+										"details": "These client item names are referenced in the Java Compute Node. You will need to update the Java Compute node in case the client items have names other than the ones mentioned above." 
 									},
 									{
 										"details": "From the OPC-UA-Read node, select the <b>Input Message Parsing</b> and select the <b>Message domain</b> as 'XMLNSC : For XML messages (namespace aware, validation, low memory use)'" 
 									},
 									{
-										"details": "Navigate back to the Flow Exerciser and click on the first Compute node in the flow. In the Compute Node Properties, specify the 'Compute Mode' as 'LocalEnvironment and Message'"
+										"details": "Double-click the Java Compute node. This will load the auto-generated code along with the code for our sample example." 
+									},	
+									{
+										"details": "The function setup" 
 									},
 									{
-										"details": "Navigate back to the Flow Exerciser and double-click the first Compute node in the flow. In the Compute node, read the values passed from the Read Node and populate the object to be passed as parameter to the ODM Rules node. In our sample example, we use the ACObject object to be passed to the ODM Rules node. The schema for this object is that specified in the XOM for the Rule and that is specified in the ODM Rules Node as described next."
+										"details": "The function evaluate" 
 									},
 									{
-										"details": "Navigate back to the Flow Exerciser and double-click on the ODM Rules node. The ODM Rules node properties window loads. "
+										"details": "Alternately, instead of using the sample example, you can add a new Java Compute Node. The next steps describe how you can add a new Java Compute node and select the required ruleset." 
 									},
 									{
-										"details": "Specify the properties of the ODM Rules node as described in  https://www.ibm.com/docs/en/app-connect/11.0.0?topic=nodes-odmrules-node "
+										"details": "     <b>i)</b> Add a new Java Compute node from the Pallete." 
 									},
 									{
-										"details": "<b>Policy</b> specifies the ODM Server policy that is created to access the Rules Server as described in the section for <b>Creating a policy project</b>."
+										"details": "     <b>ii)</b> Double-click the new Java Compute node. The <b> Java Compute node class </b> window loads." 
 									},
 									{
-										"details": "<b>Ruleset path </b> configuration enables us to connect to the Rules server and select the required rule application and rule set to be applied on the invocation of the ODM Rules node."
+										"details": "     <b>iii)</b> Select the default values and click 'Next'." 
 									},
 									{
-										"details": "After selecting the Ruleset path, the appropriate Parameters are loaded. "
+										"details": "     <b>iii)</b> From the <b>JavaCompute node class</b> template window, select <b>'Process via Operational Decision Manager ruleset'</b>." 
 									},
 									{
-										"details": "Click on the <b> Data Location </b> to load the XPath Expression Builder Window. Specify the XPath Expression. For example: '$LocalEnvironment/ACObject'. This is the object that needs to be created in the first Compute node as described above. Click on 'Finish' to close the window."
+										"details": "     <b>iv)</b> Specify the required parameters to connect to the ODM Server and click 'Next'." 
 									},
 									{
-										"details": "Navigate back to the Flow Exerciser and click on the second Compute node in the flow. In the Compute Node Properties, specify the 'Compute Mode' as 'Message' for our sample example."
+										"details": "     <b>v)</b> If the connection is successful, the window <b>'Select a ruleset for the Java ODM Template' </b> loads." 
 									},
 									{
-										"details": "From the Flow exerciser, double click on the second Compute node in the flow. In this Compute node, we can read the value returned from the ODM Rules node and captured in the object specified above."
+										"details": "     <b>vi)</b> Select the appropriate Rules application, Rule application version, Ruleset, Ruleset version." 
+									},
+									{
+										"details": "     <b>vii)</b> The appropriate ruleset parameters are then loaded." 
+									},
+									{
+										"details": "     <b>viii)</b> The appropriate ruleset parameters are then loaded." 
+									},
+									{
+										"details": "     <b>ix)</b> Please make sure to check the option for <b>'Download the jar files assosicated with this ruleset jars and add them to the Java project. </b>" 
+									},
+									{
+										"details": "     <b>x)</b> Click 'Next' and select the default values in the <b> Java Settings window</b>.  " 
+									},
+									{
+										"details": "     <b>x)</b> Click 'Next' and click on 'Finish' to complete the set up of the Java Compute node." 
+									},
+									{
+										"details": "     <b>xi)</b> The above steps will auto-generate the code for the above Java Compute node and it will also download the Java XOM API jar under the APP_OPCUA_ODM_JCN --> Other Resources folder. " 
+									},
+									{
+										"details": "     <b>xii)</b> In the auto-generated code, you will need to add code to read from the OPC-UA-Read node and populate the object to be passed to the Rules server." 
 									},
 									{
 										"details": "Save the flow"
+									},
+									{
+										"details": "For details on connecting to the ODM Server using Java Compute node, please refer to the Knowledge Center Link: https://www.ibm.com/docs/en/app-connect/12.0?topic=uodmobr-executing-odm-business-rules-by-using-javacompute-node"
 									}
 							]
 						}

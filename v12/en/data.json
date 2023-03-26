@@ -32,8 +32,8 @@
 	{
 		"_common": 
 		{
-			"name": "App Connect for Manufacturing - Integration with the IBM Operational Decision Manager (ODM) using the ODM Rules Node",
-			"shortDescription": "Create one simple message flow by using the OPC-UA-Read node and ODM Rules node to connect to an ODM Server. This tutorial requires an installation of App Connect for Manufacturing and set up of the IBM Operational Decision Manager. This tutorial assumes you are familiar with the creation of Rules in the Rules Designer and deploying the Rules on the Rules Execution Server.",
+			"name": "App Connect for Manufacturing - Integration with the IBM Operational Decision Manager (ODM) using the Java Compute node",
+			"shortDescription": "Create one simple message flow by using the OPC-UA-Read node and Java Compute node to connect to an ODM Server. This tutorial requires an installation of App Connect for Manufacturing and set up of the IBM Operational Decision Manager. This tutorial assumes you are familiar with the creation of Rules in the Rules Designer and deploying the Rules on the Rules Execution Server.",
 			"durationText": "This tutorial takes approximately",
 			"durationTime": "20 minutes",
 			"_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json.",
@@ -64,20 +64,20 @@
 					"title": "Creating a policy project"
 				},
 				{
-					"title": "Configuring the OPC-UA-Read node message flow and integrating with the ODM Rules node."
+					"title": "Configuring the OPC-UA-Read node message flow and integrating with the Java Compute node."
 				},				
 				{
 					"title": "Deploying the message flows"
 				}
 			],
 			"outcomesName": "Learning outcomes",
-			"_outcomesComment": "Learn how to create one simple message flow by using the OPC-UA-Read node and ODM Rules node to connect to an ODM Server.",			
+			"_outcomesComment": "Learn how to create one simple message flow by using the OPC-UA-Read node and Java Compute node to connect to an ODM Server.",			
 			"outcomeList": [{
-				"title": "Learn how to create one simple message flow by using the OPC-UA-Read node and ODM Rules node to connect to an ODM Server."
+				"title": "Learn how to create one simple message flow by using the OPC-UA-Read node and Java Compute node to connect to an ODM Server."
 			}],
             "summary": {
 				"overviewName": "OVERVIEW",
-				"_overviewComment": "This tutorial demonstrates how to create one simple message flow by using the OPC-UA-Read node and ODM Rules node to connect to an ODM Server. ",
+				"_overviewComment": "This tutorial demonstrates how to create one simple message flow by using the OPC-UA-Read node and Java Compute node to connect to an ODM Server. ",
 				"sections": [
 					{
 						"section": "This tutorial assumes you have installed and configured IBM Operational Decision Manager(ODM) and that you are familiar with Rules development and deployment on the Rules Server. For more information, see Installing IBM ODM in the help links provided below."
@@ -90,13 +90,13 @@
 						"section": "You must create an integration server before you can deploy integration solutions and related resources. You will also need to connect your Toolkit to an OPC server."
 					},
 					{
-						"section": "You can try out this message flow by simply importing the three provided projects. One application project contains a control flow and another application project contains a read flow using the OPC-UA-Read and ODM Rules node.The third project is a Policy project."
+						"section": "You can try out this message flow by simply importing the three provided projects. One application project contains a control flow and another application project contains a read flow using the OPC-UA-Read and Java Compute node.The third project is a Policy project."
 					},
 					{
 						"section": "The tutorial will guide you through deploying and starting both flows."
 					},
 					{
-						"section": "The read flow is driven using its HTTP Input node, which triggers the flow to run. The OPC-UA-Read node then reads data from the connected OPC server. Next, the ODM Rules node is invoked for the execution of the Decision Rules. The response from the message flow is then returned to the HTTP client by the HTTP Reply node."
+						"section": "The read flow is driven using its HTTP Input node, which triggers the flow to run. The OPC-UA-Read node then reads data from the connected OPC server. Next, the Java Compute node is invoked for the execution of the Decision Rules. The response from the message flow is then returned to the HTTP client by the HTTP Reply node."
 					}								
 				]
 			},			
@@ -126,10 +126,10 @@
 					"_createComment": "A description of what will happen when the user clicks Import.",
 					"sections": [						
 						{
-							"section": "Click <span class='uicontrol'>Import</span> and the <span class='uicontrol'>App_OPCUA_ODM</span> , <span class='uicontrol'>App_OPCUA_Control</span> and <span class='uicontrol'>Policy_OPCUA_ODM_Project</span> applications will be imported into your workspace."
+							"section": "Click <span class='uicontrol'>Import</span> and the <span class='uicontrol'>App_OPCUA_ODM_JCN</span> , <span class='uicontrol'>App_OPCUA_Control</span> and <span class='uicontrol'>Policy_OPCUA_ODM_Project</span> applications will be imported into your workspace."
 						},						
 						{
-							"section": "The <span class='uicontrol'>App_OPCUA_ODM</span> application contains <span class='uicontrol'>Flow_OPCUA_ODM.msgflow</span> while <span class='uicontrol'>App_OPCUA_Control</span> contains <span class='uicontrol'>Flow_OPCUA_Control.msgflow</span>."
+							"section": "The <span class='uicontrol'>App_OPCUA_ODM_JCN</span> application contains <span class='uicontrol'>Flow_OPCUA_ODM_JCN.msgflow</span> while <span class='uicontrol'>App_OPCUA_Control</span> contains <span class='uicontrol'>Flow_OPCUA_Control.msgflow</span>."
 						},
 						{
 							"section": "The <span class='uicontrol'>Policy_OPCUA_ODM_Project</span> project contains an ODM policy that specifies the parameters to connect to the ODM Rules Server."
@@ -203,7 +203,7 @@
 										"details": "For further information on Rules, please refer to https://www.ibm.com/docs/en/odm/8.11.1?topic=8111-decision-server-rules"
 									},
 									{
-										"details": "In the sample example, we create XOM using the XML schema definition 'SimpleAirConditionerObject.xsd' which is located under the APP_OPCUA_ODM --> XML and DFDL Schemas, under the Application Development. "
+										"details": "In the sample example, we create XOM using the Java definition in 'SimpleAirConditionerObject.jar' which is located under the APP_OPCUA_ODM --> XML and DFDL Schemas, under the Application Development. "
 									},
 									{
 										"details": "In this example, we have specified the 'temperature' and 'humidity' as input values and the outcome of the Decision Rule is expected in the 'status' parameter."
@@ -212,7 +212,7 @@
 										"details": "For more details on the creating XOM and BOM  please refer to https://www.ibm.com/docs/en/odmoc?topic=model-overview-dynamic-execution-object-xom"
 									},
 									{
-										"details": "Import the sample SimpleAirConditionerObject.xsd in the Rules project --> Import XOM  , using the Rules Designer."
+										"details": "Import the sample SimpleAirConditionerObject.jar in the Rules project --> Import XOM  , using the Rules Designer."
 									},
 									{
 										"details": "Create BOM from the XOM created in the above step."
@@ -221,7 +221,7 @@
 										"details": "Add the Decision Operation. Add a new Variable set and specify the input output parameters for the rule set."
 									},
 									{
-										"details": "In our sample example, we need to specify the AirConditionerObject as Input-Output parameter. This implies that the object that we pass as parameter to the ODM Rules node will contain the output result as well."
+										"details": "In our sample example, we need to specify the AirConditionerObject as Input-Output parameter. This implies that the object that we pass as parameter to the ODM Rules Java API will contain the output result as well."
 									},
 									{
 										"details": "Create the rule using option such as Action Rule or Decision Table. For example, rule in the Decision table could return Status of the AirConditionerObject as 'ALARM' if the temperature is greater than a certain value."
@@ -379,7 +379,7 @@
 						"steps": {
 							"type": "ordered",
 							"details": [{
-										"details": "From the Application Development view, under the App_OPCUA_Read application, double-click Flow_OPCUA_Read.msgflow to open in the Flow Exerciser. The flow consists of 'HTTP Input' , 'OPC-UA-Read', and 'HTTP Reply'"
+										"details": "From the Application Development view, under the App_OPCUA_ODM_JCN application, double-click Flow_OPCUA_ODM_JCN.msgflow to open in the Flow Exerciser."
 									},
 									{
 										"details": "Navigate to the Flow Exerciser and double-click the OPC-UA-Read node to open the OPC-UA-Read Node properties. "

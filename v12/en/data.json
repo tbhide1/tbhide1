@@ -439,13 +439,7 @@
 										"details": "Alternately, instead of using the sample example, you can add a new Java Compute Node. The next steps describe how you can add a new Java Compute node and select the required ruleset." 
 									},
 									{
-										"details": "     <b>i)</b> Add a new Java Compute node from the Pallete." 
-									},
-									{
-										"details": "     <b>ii)</b> Double-click the new Java Compute node. The <b> Java Compute node class </b> window loads." 
-									},
-									{
-										"details": "     <b>iii)</b> Select the default values and click 'Next'." 
+										"details": "&nbsp;&nbsp;&nbsp;&nbsp<b>i)</b> Add a new Java Compute node from the Pallete.<br>&nbsp;&nbsp;&nbsp;<b>ii)</b> Double-click the new Java Compute node. The <b> Java Compute node class </b> window loads.<br>&nbsp;&nbsp;&nbsp;&nbsp<b>iii)</b> Select the default values and click 'Next'." 
 									},
 									{
 										"details": "     <b>iii)</b> From the <b>JavaCompute node class</b> template window, select <b>'Process via Operational Decision Manager ruleset'</b>." 
@@ -478,7 +472,10 @@
 										"details": "     <b>xi)</b> The above steps will auto-generate the code for the above Java Compute node and it will also download the Java XOM API jar under the APP_OPCUA_ODM_JCN --> Other Resources folder. " 
 									},
 									{
-										"details": "     <b>xii)</b> In the auto-generated code, you will need to add code to read from the OPC-UA-Read node and populate the object to be passed to the Rules server." 
+										"details": "     <b>xii)</b> In the auto-generated code, you will need to add code to read from the OPC-UA-Read node and populate the object to be passed to the Rules server. Please refer to our sample code provided in the original Java Compute node provided with the example flow." 
+									},
+									{
+										"details": "Connect the OPC-UA-Read node to the one of the above Java Compute nodes (either the sample Java Compute node or the new Java Compute node created above)." 
 									},
 									{
 										"details": "Save the flow"

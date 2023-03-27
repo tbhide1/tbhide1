@@ -439,49 +439,13 @@
 										"details": "Alternately, instead of using the sample example, you can add a new Java Compute Node. The next steps describe how you can add a new Java Compute node and select the required ruleset." 
 									},
 									{
-										"details": "&nbsp;&nbsp;&nbsp;&nbsp<b>i)</b> Add a new Java Compute node from the Pallete.<br>&nbsp;&nbsp;&nbsp;<b>ii)</b> Double-click the new Java Compute node. The <b> Java Compute node class </b> window loads.<br>&nbsp;&nbsp;&nbsp;&nbsp<b>iii)</b> Select the default values and click 'Next'." 
+										"details": "&nbsp;&nbsp;&nbsp;&nbsp<b>a)</b> Add a new Java Compute node from the Pallete.<br>&nbsp;&nbsp;&nbsp;<b>b)</b> Double-click the new Java Compute node. The <b> Java Compute node class </b> window loads.<br>&nbsp;&nbsp;&nbsp;&nbsp<b>c)</b> Select the default values and click 'Next'.<br>&nbsp;&nbsp;&nbsp<b>d)</b>From the <b>JavaCompute node class</b> template window, select <b>'Process via Operational Decision Manager ruleset'</b>.<br>&nbsp;&nbsp;&nbsp<b>e)</b>Specify the required parameters to connect to the ODM Server and click 'Next'.'.<br>&nbsp;&nbsp;&nbsp<b>f)</b>If the connection is successful, the window <b>'Select a ruleset for the Java ODM Template' </b> loads.<br>&nbsp;&nbsp;&nbsp<b>g)</b>Select the appropriate Rules application, Rule application version, Ruleset, Ruleset version.<br>&nbsp;&nbsp;&nbsp<b>h)</b>The appropriate ruleset parameters are then loaded.<br>&nbsp;&nbsp;&nbsp<b>i)</b>Please make sure to check the option for <b>'Download the jar files assosicated with this ruleset jars and add them to the Java project.<br>&nbsp;&nbsp;&nbsp<b>j)</b>Click 'Next' and select the default values in the <b> Java Settings window</b>.<br>&nbsp;&nbsp;&nbsp<b>k)</b>Click 'Next' and click on 'Finish' to complete the set up of the Java Compute node.<br>&nbsp;&nbsp;&nbsp<b>l)</b>The above steps will auto-generate the code for the above Java Compute node and it will also download the Java XOM API jar under the APP_OPCUA_ODM_JCN --> Other Resources folder.<br>&nbsp;&nbsp;&nbsp<b>m)</b>In the auto-generated code, you will need to add code to read from the OPC-UA-Read node and populate the object to be passed to the Rules server. Please refer to our sample code provided in the original Java Compute node provided with the example flow.<br>&nbsp;&nbsp;&nbsp<b>n)</b>For details on connecting to the ODM Server using Java Compute node, please refer to the Knowledge Center Link: https://www.ibm.com/docs/en/app-connect/12.0?topic=uodmobr-executing-odm-business-rules-by-using-javacompute-node" 
+									},								
+									{
+										"details": "Connect the OPC-UA-Read node to the one of the above Java Compute nodes (either the sample Java Compute node or the new Java Compute node created above)."
 									},
 									{
-										"details": "     <b>iii)</b> From the <b>JavaCompute node class</b> template window, select <b>'Process via Operational Decision Manager ruleset'</b>." 
-									},
-									{
-										"details": "     <b>iv)</b> Specify the required parameters to connect to the ODM Server and click 'Next'." 
-									},
-									{
-										"details": "     <b>v)</b> If the connection is successful, the window <b>'Select a ruleset for the Java ODM Template' </b> loads." 
-									},
-									{
-										"details": "     <b>vi)</b> Select the appropriate Rules application, Rule application version, Ruleset, Ruleset version." 
-									},
-									{
-										"details": "     <b>vii)</b> The appropriate ruleset parameters are then loaded." 
-									},
-									{
-										"details": "     <b>viii)</b> The appropriate ruleset parameters are then loaded." 
-									},
-									{
-										"details": "     <b>ix)</b> Please make sure to check the option for <b>'Download the jar files assosicated with this ruleset jars and add them to the Java project. </b>" 
-									},
-									{
-										"details": "     <b>x)</b> Click 'Next' and select the default values in the <b> Java Settings window</b>.  " 
-									},
-									{
-										"details": "     <b>x)</b> Click 'Next' and click on 'Finish' to complete the set up of the Java Compute node." 
-									},
-									{
-										"details": "     <b>xi)</b> The above steps will auto-generate the code for the above Java Compute node and it will also download the Java XOM API jar under the APP_OPCUA_ODM_JCN --> Other Resources folder. " 
-									},
-									{
-										"details": "     <b>xii)</b> In the auto-generated code, you will need to add code to read from the OPC-UA-Read node and populate the object to be passed to the Rules server. Please refer to our sample code provided in the original Java Compute node provided with the example flow." 
-									},
-									{
-										"details": "Connect the OPC-UA-Read node to the one of the above Java Compute nodes (either the sample Java Compute node or the new Java Compute node created above)." 
-									},
-									{
-										"details": "Save the flow"
-									},
-									{
-										"details": "For details on connecting to the ODM Server using Java Compute node, please refer to the Knowledge Center Link: https://www.ibm.com/docs/en/app-connect/12.0?topic=uodmobr-executing-odm-business-rules-by-using-javacompute-node"
+										"details": "<br>&nbsp;&nbsp;&nbsp<b>g)</b>Save the flow."
 									}
 							]
 						}

@@ -32,7 +32,7 @@
 	{
 		"_common": 
 		{
-			"name": "App Connect for Manufacturing - Using the IBM App Connect Enterprise MQTTSubscribe node to subscribe to OPC UA PubSub data, which is published using the MQTT protocol",
+			"name": "New Test App Connect for Manufacturing - Using the IBM App Connect Enterprise MQTTSubscribe node to subscribe to OPC UA PubSub data, which is published using the MQTT protocol",
 			"shortDescription": "Create one simple message flow by using the MQTTSubscribe node and File output node ",
 			"durationText": "This tutorial takes approximately",
 			"durationTime": "20 minutes",
